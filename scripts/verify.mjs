@@ -171,7 +171,7 @@ for (const file of mediaFiles) {
 }
 if (totalBytes > limits.total) fail(`public/media totals ${size(totalBytes)}, over the ${size(limits.total)} total budget.`);
 
-// 9. Built JavaScript: forbidden text, and no Three.js renderer.
+// 9. Built JavaScript: forbidden text.
 let bundles = [];
 if (!skipDist) {
   if (!existsSync(dist) || !statSync(dist).isDirectory()) {
@@ -185,7 +185,6 @@ if (!skipDist) {
       for (const phrase of forbiddenBundleText) {
         if (text.includes(phrase)) fail(`${name} contains forbidden text: "${phrase}".`);
       }
-      if (text.includes('WebGLRenderer')) fail(`${name} contains "WebGLRenderer"; Three.js must not ship in the bundle.`);
     }
   }
 }

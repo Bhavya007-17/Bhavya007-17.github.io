@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import content from './data/projects.json';
 import CaseStudy from './components/CaseStudy.jsx';
 import MotionToggle from './components/MotionToggle.jsx';
@@ -7,6 +7,8 @@ import Showreel from './components/Showreel.jsx';
 import Skills from './components/Skills.jsx';
 import TradeStudy from './components/TradeStudy.jsx';
 
+// Three.js lives in its own chunk, loaded only when the home page renders.
+const ArmHero = lazy(() => import('./components/ArmHero.jsx'));
 const { profile, projects } = content;
 const SITE_TITLE = 'Bhavya Dosi — Mechanical Engineering & Robotics';
 const Arrow = () => <span aria-hidden="true">↗</span>;
@@ -65,7 +67,7 @@ function Header() {
   return <header className="site-header"><div className="shell header-inner"><a href="#/" className="brand" aria-label="Bhavya Dosi, home"><span className="brand-icon" aria-hidden="true">B.</span><span>Bhavya Dosi</span></a><nav aria-label="Main navigation"><a href="#/projects">Projects</a><a href="#/about">About</a><a href="#/contact">Contact</a><MotionToggle /><a className="nav-resume" href={profile.resume} target="_blank" rel="noreferrer">Resume <Arrow /></a></nav></div></header>;
 }
 
-// DOM order is copy, actions, reel so keyboard users reach Resume before the reel controls; CSS grid areas place the reel beside/under the copy.
+// DOM order is copy, actions, arm so keyboard users reach Resume first; CSS grid areas put the arm beside the copy (or under it on phones).
 function Hero() {
   const firstName = profile.name.split(' ')[0];
   return <section className="hero shell" aria-labelledby="hero-title">
@@ -83,6 +85,13 @@ function Hero() {
         <a className="quiet-link" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
       </div>
     </div>
+    <div className="hero-visual"><Suspense fallback={<div className="arm-loading" aria-label="Loading arm animation" />}><ArmHero /></Suspense></div>
+  </section>;
+}
+
+function InMotion() {
+  return <section id="in-motion" className="reel-section shell" aria-labelledby="in-motion-title">
+    <div className="section-title"><div><h2 id="in-motion-title">In motion</h2><p>Real footage from the projects — simulation runs and a bench prototype.</p></div></div>
     <Showreel clips={profile.reel} projects={projects} />
   </section>;
 }
@@ -103,7 +112,7 @@ function Contact() {
 }
 
 function Home() {
-  return <main id="main" tabIndex="-1"><div id="top" /><Hero /><Projects /><Skills groups={profile.skills} projects={projects} /><About /><Contact /></main>;
+  return <main id="main" tabIndex="-1"><div id="top" /><Hero /><InMotion /><Projects /><Skills groups={profile.skills} projects={projects} /><About /><Contact /></main>;
 }
 
 export default function App() {

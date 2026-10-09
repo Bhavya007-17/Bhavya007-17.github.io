@@ -1,6 +1,6 @@
 # Bhavya Dosi — portfolio
 
-Personal robotics portfolio: a warm dark React site that leads with real project footage. The home page has a muted showreel and seven project cards; each project opens as a case study (problem, how it works, design decisions, sourced results, what didn't work, what's next, gallery). One project also links to a frame-material trade study. Built with Vite for GitHub Pages; no backend or API keys.
+Personal robotics portfolio: a warm dark React site that leads with real project footage. The home page opens with a decorative 3D robot arm, then an "In motion" strip of muted project clips, then seven project cards; each project opens as a case study (problem, how it works, design decisions, sourced results, what didn't work, what's next, gallery). One project also links to a frame-material trade study. Built with Vite for GitHub Pages; no backend or API keys.
 
 ## Run locally
 
@@ -40,8 +40,9 @@ Captions and labels must say what the footage is: simulation is called simulatio
 
 ## Components
 
-- `App.jsx`: hash routing (with scroll restoration for Back), header, hero, home sections.
-- `Showreel.jsx`: plays the five `profile.reel` clips one at a time, muted. Only the current clip is loaded. It advances when a clip ends, has a caption chip and dot buttons, links to the project, and pauses when scrolled out of view. When the system asks for reduced motion it is a grid of posters instead.
+- `App.jsx`: hash routing (with scroll restoration for Back), header, hero, home sections. The hero shows the tagline and actions beside the arm; the "In motion" section sits directly under it.
+- `ArmHero.jsx` and `armMotion.js`: the hero arm, a decorative procedural Three.js model (not a real robot, no data behind it) that picks and places a cube in a loop. It is lazy-loaded, so Three.js is a separate chunk that only the home page requests. It obeys the motion toggle (frozen on its current frame while paused), stops rendering while off screen, and falls back to a vector drawing when WebGL is unavailable.
+- `Showreel.jsx`: the "In motion" strip, full width at 16:9. It plays the five `profile.reel` clips one at a time, muted. Only the current clip is loaded. It advances when a clip ends, has a caption chip and dot buttons, links to the project, and pauses when scrolled out of view. When the system asks for reduced motion it is a grid of posters instead.
 - `ProjectCard.jsx`: one card per project (HIVE spans two columns on wide screens).
 - `MediaThumb.jsx`: renders a media object. Videos use `preload="none"` and a poster; looping card/step videos are muted and play only while at least half visible. A missing file falls back to its poster, then to the alt text.
 - `CaseStudy.jsx`: the case-study page template.
@@ -54,7 +55,7 @@ Captions and labels must say what the footage is: simulation is called simulatio
 
 Warm charcoal surfaces, cream text, copper links, and red reserved for status and one highlighted chip per card. Fonts are DM Sans and Instrument Serif. Text is at least 12 px and nothing overflows horizontally at 390, 768 or 1440 px.
 
-Motion: nothing autoplays with sound, and nothing loads video it does not need. Hero videos on case studies show a poster with controls and never autoplay. The header has one **Pause motion / Play motion** toggle that stops the showreel and every card and step loop and keeps new ones from starting; the choice is remembered in `localStorage` (the site still works if storage is unavailable). With no saved choice, motion is paused when the system asks for reduced motion.
+Motion: nothing autoplays with sound, and nothing loads video it does not need. The hero arm and the showreel are in the first screens, so the arm's Three.js chunk is the one sizeable download on the home page. Hero videos on case studies show a poster with controls and never autoplay. The header has one **Pause motion / Play motion** toggle that stops the hero arm (it freezes on its current frame), the showreel and every card and step loop, and keeps new ones from starting; the choice is remembered in `localStorage` (the site still works if storage is unavailable). With no saved choice, motion is paused when the system asks for reduced motion.
 
 ## `npm run verify`
 
@@ -64,4 +65,4 @@ Run after `npm run build` (set `VERIFY_DIST=<dir>` for another build folder, `VE
 - a reel that is not exactly 5 clips, or reel/skill entries pointing at unknown projects;
 - forbidden keys (`source`, `sources`, `notes`, `kind`, `featured` outside the places that use them) and placeholder text (TODO, TBD, lorem, FIXME);
 - any `./media/...` path that does not exist, any file in `public/media` that nothing references, any video without a `.jpg` poster, and any file over its size budget;
-- the built JavaScript containing a WebGL renderer or phrases that must not ship.
+- the built JavaScript containing phrases that must not ship.
