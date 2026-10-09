@@ -1,0 +1,20 @@
+{
+  "name": "bhavya-dosi-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "verify": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
+}

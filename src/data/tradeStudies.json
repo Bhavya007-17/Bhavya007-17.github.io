@@ -1,0 +1,94 @@
+{
+  "amphibious-frame": {
+    "projectId": "amphibious-robot",
+    "title": "Frame material trade study",
+    "subtitle": "Laser-cut sheet for an amphibious ring-frame robot",
+    "date": "October 2026",
+    "summary": "Six sheet materials scored against the loads and environments an air–ground–water frame sees. Sealed birch plywood ranks first when the frame is cut in-house on a CO₂ laser; carbon-fiber plate takes over when machining can be outsourced or water exposure dominates.",
+    "question": "Which sheet material should the laser-cut arms and decks be made from, given that the same frame has to fly, drive, and swim?",
+    "context": [
+      "The arms and decks are thin plates loaded mostly in bending: motor thrust in flight, wheel and ground reactions when driving, and drag and buoyancy in water.",
+      "Every gram of frame costs flight time, so stiffness and strength are compared per unit mass, not in absolute terms.",
+      "The frame gets wet and takes hits — landings, curbs, rocks — so water durability and impact toughness matter as much as stiffness.",
+      "Parts are cut in-house on a CO₂ laser, which rules out some high-performance sheets unless machining is outsourced."
+    ],
+    "method": [
+      "Stiffness and strength use Ashby's panel-in-bending indices for minimum mass at fixed length and width with free thickness: ∛E / ρ for stiffness and √σ / ρ for strength (E = flexural modulus in GPa, σ = flexural strength in MPa, ρ = density in g/cm³).",
+      "Index values are mapped linearly to a 1–5 score between the lowest and highest option. Water durability, impact toughness, manufacturability, and cost are scored 1–5 from datasheet behavior and shop constraints.",
+      "Totals are weighted sums. Three weight sets test whether the ranking survives a change in priorities."
+    ],
+    "criteria": [
+      { "id": "stiffness", "name": "Stiffness per mass", "basis": "Panel index ∛E / ρ" },
+      { "id": "strength", "name": "Strength per mass", "basis": "Panel index √σ / ρ" },
+      { "id": "water", "name": "Water durability", "basis": "Absorption, swelling, corrosion" },
+      { "id": "impact", "name": "Impact toughness", "basis": "Crash and landing behavior" },
+      { "id": "manufacturing", "name": "In-house manufacturing", "basis": "Cuts cleanly and safely on a CO₂ laser" },
+      { "id": "cost", "name": "Cost and availability", "basis": "Sheet price and lead time" }
+    ],
+    "weightSets": [
+      {
+        "id": "baseline",
+        "label": "Baseline — cut in-house",
+        "weights": { "stiffness": 0.25, "strength": 0.15, "water": 0.2, "impact": 0.15, "manufacturing": 0.15, "cost": 0.1 }
+      },
+      {
+        "id": "water-first",
+        "label": "Water exposure dominates",
+        "weights": { "stiffness": 0.2, "strength": 0.1, "water": 0.35, "impact": 0.15, "manufacturing": 0.12, "cost": 0.08 }
+      },
+      {
+        "id": "outsourced",
+        "label": "Machining outsourced",
+        "weights": { "stiffness": 0.35, "strength": 0.2, "water": 0.25, "impact": 0.15, "manufacturing": 0, "cost": 0.05 }
+      }
+    ],
+    "options": [
+      { "id": "plywood", "name": "Birch plywood, sealed", "short": "Plywood", "note": "Best stiffness per mass of any sheet here and cuts cleanly on a laser. Absorbs water and swells unless faces and cut edges are sealed; stiffness is lower across the face grain." },
+      { "id": "acrylic", "name": "Cast acrylic (PMMA)", "short": "Acrylic", "note": "Waterproof and laser-friendly, but brittle — it cracks from notches and bolt holes on impact." },
+      { "id": "pom", "name": "Acetal (POM)", "short": "Acetal", "note": "Waterproof, very tough, and laser-cuttable with strong fume extraction. The most flexible option per unit mass." },
+      { "id": "cf", "name": "Carbon-fiber plate", "short": "Carbon fiber", "note": "Strongest per unit mass and waterproof. Cannot be cut on a CO₂ laser; needs CNC routing with dust control, and edges can delaminate." },
+      { "id": "g10", "name": "G10 glass-epoxy", "short": "G10", "note": "Strong, tough, and waterproof, but heavy and abrasive to machine; not laser-cuttable." },
+      { "id": "al5052", "name": "Aluminum 5052-H32", "short": "Aluminum", "note": "Marine alloy that dents instead of cracking. Heaviest option and needs a waterjet, CNC, or fiber laser." }
+    ],
+    "propertyColumns": [
+      { "key": "density", "label": "Density", "unit": "g/cm³" },
+      { "key": "modulus", "label": "Flexural modulus", "unit": "GPa" },
+      { "key": "strength", "label": "Flexural strength", "unit": "MPa" },
+      { "key": "stiffnessIndex", "label": "∛E / ρ", "unit": "" },
+      { "key": "strengthIndex", "label": "√σ / ρ", "unit": "" },
+      { "key": "laser", "label": "CO₂ laser", "unit": "" }
+    ],
+    "properties": {
+      "plywood": { "density": "0.68", "modulus": "8 (6–12)", "strength": "60 (50–70)", "stiffnessIndex": "2.94", "strengthIndex": "11.4", "laser": "Yes" },
+      "acrylic": { "density": "1.19", "modulus": "3.3", "strength": "114", "stiffnessIndex": "1.25", "strengthIndex": "9.0", "laser": "Yes" },
+      "pom": { "density": "1.42", "modulus": "2.9", "strength": "85", "stiffnessIndex": "1.00", "strengthIndex": "6.5", "laser": "With extraction" },
+      "cf": { "density": "1.55", "modulus": "50", "strength": "600", "stiffnessIndex": "2.38", "strengthIndex": "15.8", "laser": "No" },
+      "g10": { "density": "1.82", "modulus": "18.6", "strength": "448", "stiffnessIndex": "1.46", "strengthIndex": "11.6", "laser": "No" },
+      "al5052": { "density": "2.68", "modulus": "70.3", "strength": "193 (yield)", "stiffnessIndex": "1.54", "strengthIndex": "5.2", "laser": "No" }
+    },
+    "scores": {
+      "plywood": { "stiffness": 5.0, "strength": 3.3, "water": 2, "impact": 3, "manufacturing": 5, "cost": 5 },
+      "acrylic": { "stiffness": 1.5, "strength": 2.4, "water": 5, "impact": 1, "manufacturing": 5, "cost": 4 },
+      "pom": { "stiffness": 1.0, "strength": 1.5, "water": 5, "impact": 5, "manufacturing": 4, "cost": 3 },
+      "cf": { "stiffness": 3.8, "strength": 5.0, "water": 5, "impact": 3, "manufacturing": 1, "cost": 1 },
+      "g10": { "stiffness": 1.9, "strength": 3.4, "water": 5, "impact": 4, "manufacturing": 1, "cost": 3 },
+      "al5052": { "stiffness": 2.1, "strength": 1.0, "water": 4, "impact": 5, "manufacturing": 2, "cost": 3 }
+    },
+    "result": [
+      "With the frame cut in-house, sealed birch plywood scores highest. No sheet material here beats wood on bending stiffness per unit mass, and it cuts quickly and cleanly on a CO₂ laser. Its weakness is water: faces and every cut edge need an epoxy or polyurethane seal.",
+      "Carbon-fiber plate is second at baseline and first under both alternative weightings — when machining is outsourced, or when water exposure dominates. The ranking therefore turns on the fabrication route, not on the material data.",
+      "Acetal is the best fully waterproof sheet that can still be laser cut, and the toughest in a crash, at the cost of the lowest stiffness per mass. Acrylic is ruled out by brittleness at bolt holes; G10 and aluminum carry too much mass for a flying frame."
+    ],
+    "recommendation": "Prototype frames in sealed birch plywood for fast laser-cut iteration. Move the flight frame to carbon-fiber plate once CNC routing is available, and use acetal for splash-zone brackets and parts that take direct impacts.",
+    "limitations": [
+      "Properties are typical datasheet values for ranking, not design allowables; grades and suppliers vary.",
+      "Plywood and carbon-fiber plate are anisotropic. Plywood's cross-grain stiffness can be roughly half the face-grain value, so arm layouts should follow the face grain.",
+      "The panel indices assume thickness is free to change. Fixed sheet gauges, fasteners, and joints shift real part masses."
+    ],
+    "sources": [
+      "M. F. Ashby, Materials Selection in Mechanical Design, 5th ed., Butterworth-Heinemann, 2016 — panel-in-bending performance indices.",
+      "USDA Forest Products Laboratory, Wood Handbook: Wood as an Engineering Material, FPL-GTR-282, 2021 — wood and plywood properties and moisture behavior.",
+      "Manufacturer technical data sheets: cast acrylic (ACRYLITE GP), acetal homopolymer (Delrin 150), 3K twill carbon-fiber plate, NEMA grade G10 laminate, and aluminum 5052-H32."
+    ]
+  }
+}
