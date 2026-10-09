@@ -77,7 +77,7 @@
     "result": [
       "With the frame cut in-house, sealed birch plywood scores highest. No sheet material here beats wood on bending stiffness per unit mass, and it cuts quickly and cleanly on a CO₂ laser. Its weakness is water: faces and every cut edge need an epoxy or polyurethane seal.",
       "Carbon-fiber plate is second at baseline and first under both alternative weightings — when machining is outsourced, or when water exposure dominates. The ranking therefore turns on the fabrication route, not on the material data.",
-      "Acetal is the best fully waterproof sheet that can still be laser cut, and the toughest in a crash, at the cost of the lowest stiffness per mass. Acrylic is ruled out by brittleness at bolt holes; G10 and aluminum carry too much mass for a flying frame."
+      "Acetal is the best fully waterproof sheet that can still be laser cut, and tied with aluminum as the toughest in a crash, at the cost of the lowest stiffness per mass. Acrylic is ruled out by brittleness at bolt holes; G10 and aluminum carry too much mass for a flying frame."
     ],
     "recommendation": "Prototype frames in sealed birch plywood for fast laser-cut iteration. Move the flight frame to carbon-fiber plate once CNC routing is available, and use acetal for splash-zone brackets and parts that take direct impacts.",
     "limitations": [

@@ -252,14 +252,14 @@
       ],
       "tldr": [
         "What: Onboard an unfamiliar robot straight from its ROS 2 workspace, then coordinate a mixed fleet from one natural-language mission.",
-        "How: A Composer turns URDF, launch files, and interfaces into a capability descriptor with file-and-line provenance; an Executive plans, validates in simulation, waits for human approval, and dispatches to capability-matched agents.",
+        "How: A Composer turns URDF, launch files, and interfaces into a capability descriptor with evidence citations back to the source files; an Executive plans, validates in simulation, waits for human approval, and dispatches to capability-matched agents.",
         "Result: 5 of 5 red-box retrieval missions passed in Gazebo with a quadrotor, a ground robot, and an arm — and the system refuses missions no robot in the fleet can perform."
       ],
       "problem": "Every robot in a mixed fleet speaks its own ROS 2 dialect, so adding one usually means weeks of bespoke integration code. HIVE's goal is to replace that with workspace analysis: read the robot's code, derive what it can safely do, and let a single planner coordinate ground, aerial, and manipulator robots from a plain-English mission.",
       "steps": [
         {
           "title": "Composer reads the robot's code",
-          "text": "Static analysis of the URDF, launch-file ASTs, message interfaces, and ros_gz bridge config feeds a schema-forced LLM that drafts a Robot Capability Descriptor. Any capability without a file:line citation is rejected."
+          "text": "Static analysis of the URDF, launch-file ASTs, message interfaces, and ros_gz bridge config feeds a schema-forced LLM that drafts a Robot Capability Descriptor. Each capability carries evidence citations back to the files it came from."
         },
         {
           "title": "Executive plans and asks for approval",
@@ -293,17 +293,17 @@
         },
         {
           "title": "Designing the rover it will run on",
-          "text": "In parallel I designed a four-wheeled rover with a 5-axis arm on a turntable in Fusion 360 and sized its joints by calculation: the R2b J2 joint needs 56.52 N·m against 80.7 N·m usable, and the moving arm came in at 9.28 kg against a 6.7 kg budget — the overrun the next revision has to remove.",
+          "text": "In parallel I designed a four-wheeled rover with a 5-axis arm on a turntable in Fusion 360 and sized its joints by calculation: the R2b J2 joint needs 56.52 N·m against 80.7 N·m usable inside its enforced workspace limits, and the moving arm came in at 9.28 kg against a 6.7 kg budget — the overrun the next revision has to remove.",
           "media": {
             "type": "image",
             "src": "./media/hive/rover-ref2.jpg",
             "alt": "Fusion 360 render of the HIVE rover with its arm holding a box.",
-            "caption": "Rover design (Fusion 360 render)."
+            "caption": "Rover design, Ref2 variant (CAD render)."
           }
         }
       ],
       "decisions": [
-        "Provenance is overwritten after the LLM step, so the model can't fabricate its own audit trail — every capability claim must point at a real file and line.",
+        "Provenance is overwritten after the LLM step, so the model can't fabricate its own audit trail — citations come from the static analysis, not from the model.",
         "The planner is allowed to refuse: the Composer benchmark scores calibrated refusal, and a refused plan never reaches the approval gate.",
         "Plans reference named places, never coordinates the LLM invents.",
         "The e-stop runs in a reentrant group with a fast-polled cancel token rather than as a queued action, trading code simplicity for a stop that can't be blocked.",
@@ -333,7 +333,7 @@
       ],
       "failures": [
         {
-          "title": "Refusing an impossible mission",
+          "title": "Refusing a capability nobody has reviewed",
           "text": "When no robot in the fleet holds a reviewed ‘flight’ capability, a mission that needs flight is refused with the reason instead of producing a plan the fleet can’t execute.",
           "media": {
             "type": "image",
@@ -427,7 +427,7 @@
         },
         {
           "value": "1.58 s",
-          "label": "to transcribe the command in the clip above"
+          "label": "to transcribe the 2.5 s command in the clip (first call after model load)"
         },
         {
           "value": "7-DOF",
@@ -435,7 +435,7 @@
         },
         {
           "value": "27",
-          "label": "voice-pipeline tests"
+          "label": "voice-pipeline test functions"
         }
       ],
       "tldr": [
@@ -495,12 +495,12 @@
         },
         {
           "value": "1.58 s",
-          "label": "transcription time for the spoken command in the clip above",
+          "label": "to transcribe the 2.5 s spoken command in the clip above, first call after model load",
           "source": "Recorded run, Oct 2026"
         },
         {
           "value": "27",
-          "label": "tests covering recording, transcription gates, and blocklist",
+          "label": "test functions covering recording, transcription gates, and the blocklist",
           "source": "robotic-arm test_voice.py"
         }
       ],
@@ -562,7 +562,7 @@
       "domains": [
         "Mechanical"
       ],
-      "summary": "One airframe designed to fly, drive, and swim, built around four ring ducts that tilt on high-torque servos.",
+      "summary": "One airframe designed to fly, drive, and swim, built around four ring ducts that tilt between flight and driving orientations.",
       "chips": [
         "Ring-duct prototype built",
         "Frame material trade study",
@@ -572,14 +572,14 @@
         "type": "video",
         "src": "./media/amphibious-robot/loop.mp4",
         "poster": "./media/amphibious-robot/loop.jpg",
-        "alt": "Red 3D-printed ring duct around a brushless motor and propeller, mounted on its servo on the bench."
+        "alt": "Red 3D-printed ring duct around a motor and propeller on its bench mount."
       },
       "hero": {
         "type": "video",
         "src": "./media/amphibious-robot/tilt-test.mp4",
         "poster": "./media/amphibious-robot/tilt-test.jpg",
-        "alt": "Bench footage of the prototype ring-duct module: a red 3D-printed ring around a motor and propeller on its servo mount.",
-        "caption": "Prototype ring-duct module on the bench: 3D-printed ring, brushless motor, and propeller on its servo mount."
+        "alt": "Bench footage of the prototype ring-duct module: a red 3D-printed ring around a motor and propeller on its mount.",
+        "caption": "Prototype ring-duct module on the bench: 3D-printed ring, motor, and propeller on its mount."
       },
       "facts": [
         {
@@ -597,8 +597,8 @@
       ],
       "tldr": [
         "What: A CroLabs robot that uses one structure for flight, driving, and swimming.",
-        "How: Four ring ducts with brushless motors and propellers mount on servo-driven tilt joints around a central electronics bay, tied together by a laser-cut frame.",
-        "Result: The tilt mechanism is built and running on the bench, and a six-material trade study sets the frame material path from prototype to flight frame."
+        "How: Four ring ducts with motors and propellers sit on tilt joints around a central electronics bay, tied together by a laser-cut frame.",
+        "Result: A ring-duct module and the drivetrain electronics are built for bench testing, and a six-material trade study sets the frame-material path from prototype to flight frame."
       ],
       "problem": "A robot that crosses air, ground, and water usually carries three propulsion systems, and the extra mass kills flight time. Tilting ring ducts let the same motors and structure serve every mode — which puts the whole burden on a frame that must be light, stiff, waterproof, and survive impacts.",
       "steps": [
@@ -614,17 +614,17 @@
         },
         {
           "title": "Build the drivetrain on the bench",
-          "text": "Brushless motors, 25 kg servos, and the control electronics go together on 3D-printed arms for bench testing.",
+          "text": "Motors, servos, and the control electronics go together on 3D-printed arms for bench testing.",
           "media": {
             "type": "image",
             "src": "./media/amphibious-robot/bench.jpg",
-            "alt": "Bench prototype with black 3D-printed arms, brushless motors, servos, and wiring.",
-            "caption": "Bench prototype: printed arms, brushless motors, 25 kg servos, and control electronics."
+            "alt": "Bench prototype with black 3D-printed arms, motors, servos, and wiring.",
+            "caption": "Bench prototype: printed arms, motors, servos, and control electronics."
           }
         },
         {
           "title": "Build and test the ring-duct module",
-          "text": "Each ring duct is a 3D-printed ring around a brushless motor and propeller, carried on a servo so it can tilt between flight and driving orientations; on the bench it was driven from vertical to horizontal."
+          "text": "Each ring duct is a 3D-printed ring around a motor and propeller, designed to tilt between flight and driving orientations — the CAD shows both poses."
         },
         {
           "title": "Choose the frame material",
@@ -634,13 +634,13 @@
       "decisions": [
         "Prototype frames in sealed birch plywood: it has the best bending stiffness per unit mass of the six sheets compared and cuts cleanly on the in-house CO₂ laser.",
         "Move the flight frame to carbon-fiber plate once CNC routing is available — it ranks first whenever machining can be outsourced or water exposure dominates.",
-        "Use acetal for splash-zone brackets and parts that take direct hits: it is waterproof, laser-cuttable, and the toughest option in a crash."
+        "Use acetal for splash-zone brackets and parts that take direct hits: it is waterproof, laser-cuttable, and tied with aluminum as the toughest option in a crash."
       ],
       "results": [
         {
-          "value": "Bench test",
-          "label": "ring-duct module tilted from vertical to horizontal on its servo",
-          "source": "Bench test footage, May 2026"
+          "value": "Prototype",
+          "label": "ring-duct module and drivetrain electronics assembled for bench testing",
+          "source": "Bench photo and footage, May 2026"
         },
         {
           "value": "3.85 / 5",
@@ -716,7 +716,7 @@
         },
         {
           "value": "163",
-          "label": "tests across 30 seeds"
+          "label": "tests, including a 30-seed maze sweep"
         },
         {
           "value": "96%",
@@ -780,7 +780,7 @@
         },
         {
           "value": "163",
-          "label": "tests across 30 seeds; 96% coverage on the new pure modules",
+          "label": "tests, including a 30-seed maze sweep; 96% coverage on the new pure modules",
           "source": "ros2-micromouse-sync README"
         }
       ],
@@ -952,7 +952,7 @@
       "id": "autonomous-drone",
       "name": "Drone Tracker",
       "status": "Design & analysis",
-      "role": "Sole designer",
+      "role": "CAD packaging, component layout, and FEA",
       "team": "Solo",
       "timeline": "Jun – Jul 2026",
       "domains": [
@@ -967,13 +967,13 @@
       "card": {
         "type": "image",
         "src": "./media/autonomous-drone/render.jpg",
-        "alt": "Fusion 360 render of the ducted quadcopter with flight stack, gimbal, and red landing feet."
+        "alt": "Fusion 360 render of the ducted quadcopter with its flight stack and camera gimbal."
       },
       "hero": {
         "type": "image",
         "src": "./media/autonomous-drone/render.jpg",
-        "alt": "Fusion 360 render of the ducted quadcopter with flight stack, gimbal, and red landing feet.",
-        "caption": "Fusion 360 assembly: CINEC 25.1.2 ducted frame with flight stack, camera gimbal, and landing feet."
+        "alt": "Fusion 360 render of the ducted quadcopter with its flight stack and camera gimbal.",
+        "caption": "Fusion 360 assembly: CINEC 25.1.2 ducted frame with flight stack and camera gimbal."
       },
       "facts": [
         {
