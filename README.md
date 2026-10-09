@@ -36,7 +36,7 @@ All text lives in data files; the components only render it.
 
 Project IDs appear in links such as `#/project/hive`; keep them stable. `#/project/p1` still resolves to `act-training`. Trade studies live at `#/study/<id>`.
 
-Captions and labels must say what the footage is: simulation is called simulation, CAD is called design, the amphibious clip is a tilt-ring prototype test, and ACT dataset clips are scripted-expert demonstrations, not a trained policy.
+Captions and labels must say what the footage is: simulation is called simulation, CAD is called design, the amphibious clip is a bench test of the ring-duct prototype, and ACT dataset clips are scripted-expert demonstrations, not a trained policy.
 
 ## Components
 
