@@ -2,17 +2,21 @@
   "profile": {
     "name": "Bhavya Dosi",
     "headline": "Mechanical engineering · Virginia Tech · Class of 2029",
-    "summary": "I work across mechanical design and robot software: CAD, structural analysis, simulation, and the code that turns a command into robot motion.",
+    "tagline": "I build robots end to end — CAD and FEA hardware, ROS 2 and MuJoCo software, and robot learning.",
+    "availability": "Looking for Summer 2027 internships in robotics and physical AI.",
+    "summary": "Mechanical engineering sophomore and Chief Engineer of CroLabs at Virginia Tech. I like the parts of robotics where hardware and software have to agree: a frame that survives its load case, a planner that knows what a robot can actually do, a dataset whose failures are logged instead of hidden.",
     "github": "https://github.com/Bhavya007-17",
     "linkedin": "https://www.linkedin.com/in/bhavya-dosi",
     "email": "bhavyadosi@vt.edu",
+    "resume": "./Bhavya-Dosi-Resume.pdf",
     "education": "B.S. Mechanical Engineering · Virginia Tech · Expected May 2029",
+    "educationDetail": "GPA 3.86 · Dean’s List with Distinction",
     "experience": [
       {
         "role": "Chief Engineer",
         "organization": "CroLabs · VT Competitive Robotics Organization",
         "dates": "Sep 2025 – Present",
-        "description": "Lead technical direction for HIVE, the team's framework for coordinating different robots, with 25+ student members across software, electrical, mechanical, and drone subteams."
+        "description": "Lead technical direction for HIVE, the team's heterogeneous-robot framework, with 25+ student members across software, electrical, mechanical, and drone subteams."
       },
       {
         "role": "Technical Consultant",
@@ -27,264 +31,1186 @@
         "description": "Founded a design studio serving 20+ clients, managing projects end to end and using generative-AI tools to speed up production."
       }
     ],
-    "resume": "./Bhavya-Dosi-Resume.pdf",
-    "educationDetail": "GPA 3.86 · Dean’s List with Distinction",
     "skills": [
-      "ROS 2 (Jazzy)",
-      "Gazebo",
-      "MuJoCo",
-      "Python",
-      "Fusion 360",
-      "SolidWorks",
-      "FEA (Fusion Simulation)",
-      "Design for manufacturing",
-      "FDM/resin printing",
-      "Laser cutting",
-      "Differential IK",
-      "LiteLLM",
-      "MCP",
-      "LeRobot",
-      "Git",
-      "Linux / WSL2"
+      {
+        "group": "Mechanical design & analysis",
+        "items": [
+          {
+            "name": "Fusion 360 CAD",
+            "projects": [
+              "hive",
+              "autonomous-drone",
+              "amphibious-robot"
+            ]
+          },
+          {
+            "name": "FEA (Fusion Simulation)",
+            "projects": [
+              "autonomous-drone"
+            ]
+          },
+          {
+            "name": "Joint & actuator sizing",
+            "projects": [
+              "hive"
+            ]
+          },
+          {
+            "name": "Materials trade studies",
+            "projects": [
+              "amphibious-robot"
+            ]
+          },
+          {
+            "name": "Laser cutting & 3D printing",
+            "projects": [
+              "amphibious-robot"
+            ]
+          },
+          {
+            "name": "Component packaging",
+            "projects": [
+              "autonomous-drone",
+              "amphibious-robot"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Robot software & simulation",
+        "items": [
+          {
+            "name": "ROS 2 Jazzy",
+            "projects": [
+              "hive",
+              "ros2-micromouse-sync"
+            ]
+          },
+          {
+            "name": "Gazebo Harmonic",
+            "projects": [
+              "hive",
+              "ros2-micromouse-sync"
+            ]
+          },
+          {
+            "name": "MuJoCo",
+            "projects": [
+              "robotic-arm",
+              "act-training"
+            ]
+          },
+          {
+            "name": "Differential IK (mink)",
+            "projects": [
+              "robotic-arm",
+              "act-training"
+            ]
+          },
+          {
+            "name": "PX4 · TurtleBot3 · OpenMANIPULATOR-X",
+            "projects": [
+              "hive"
+            ]
+          },
+          {
+            "name": "Python · pytest",
+            "projects": [
+              "hive",
+              "ros2-micromouse-sync",
+              "robotic-arm",
+              "jarvis-agentic-orchestrator"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Robot learning & AI",
+        "items": [
+          {
+            "name": "LeRobot · ACT",
+            "projects": [
+              "act-training"
+            ]
+          },
+          {
+            "name": "PyTorch (CUDA, bf16)",
+            "projects": [
+              "act-training"
+            ]
+          },
+          {
+            "name": "Dataset collection (LeRobot v3)",
+            "projects": [
+              "act-training"
+            ]
+          },
+          {
+            "name": "LLM tool calling & planning",
+            "projects": [
+              "hive",
+              "robotic-arm",
+              "jarvis-agentic-orchestrator"
+            ]
+          },
+          {
+            "name": "Local speech-to-text (faster-whisper)",
+            "projects": [
+              "robotic-arm"
+            ]
+          },
+          {
+            "name": "LiteLLM · MCP",
+            "projects": [
+              "jarvis-agentic-orchestrator"
+            ]
+          }
+        ]
+      }
+    ],
+    "reel": [
+      {
+        "project": "hive",
+        "src": "./media/hive/loop.mp4",
+        "poster": "./media/hive/loop.jpg",
+        "caption": "HIVE · multi-robot mission in Gazebo (simulation)"
+      },
+      {
+        "project": "robotic-arm",
+        "src": "./media/robotic-arm/loop.mp4",
+        "poster": "./media/robotic-arm/loop.jpg",
+        "caption": "Natural-language arm · pick-and-place in MuJoCo (simulation)"
+      },
+      {
+        "project": "amphibious-robot",
+        "src": "./media/amphibious-robot/loop.mp4",
+        "poster": "./media/amphibious-robot/loop.jpg",
+        "caption": "Amphibious robot · ring-duct prototype on the bench"
+      },
+      {
+        "project": "ros2-micromouse-sync",
+        "src": "./media/ros2-micromouse-sync/loop.mp4",
+        "poster": "./media/ros2-micromouse-sync/loop.jpg",
+        "caption": "Micromouse explorer · mapping an unseen maze (simulation)"
+      },
+      {
+        "project": "act-training",
+        "src": "./media/act-training/loop.mp4",
+        "poster": "./media/act-training/loop.jpg",
+        "caption": "SO-101 dataset · scripted-expert demonstration (simulation)"
+      }
     ]
   },
   "projects": [
     {
       "id": "hive",
       "name": "HIVE",
-      "repo": null,
-      "link": "https://www.vtcro.org/teams/crolabs",
-      "linkLabel": "CroLabs team page",
-      "category": "Robotics",
-      "status": "In development · Team project",
-      "summary": "A CroLabs framework that onboards different robots from their own code and coordinates them through a shared world model.",
-      "description": "HIVE — Heterogeneous Intelligent Vehicle Ensemble — lets one plain-language mission drive a mixed team of ground, aerial, and manipulator robots. Onboarding reads a robot's ROS 2 workspace, collects interface evidence, and drafts a capability profile for human review. Each reviewed robot becomes an embodied agent; an Executive plans against a shared world model and dispatches validated steps, while navigation, flight, manipulation, and emergency stop stay on the robot.",
+      "status": "Working in simulation",
+      "role": "Chief Engineer · built the ROS 2 software stack and designed the rover hardware",
+      "team": "CroLabs team project (25+ members)",
+      "timeline": "Jul 2026 – present",
+      "domains": [
+        "Software",
+        "Mechanical"
+      ],
+      "summary": "A ROS 2 framework that reads a new robot's code, works out what it can do, and runs a mixed robot team from one plain-English mission — end to end in Gazebo.",
+      "chips": [
+        "5/5 sim missions passed",
+        "189.5 ms e-stop halt",
+        "516 tests"
+      ],
+      "card": {
+        "type": "video",
+        "src": "./media/hive/loop.mp4",
+        "poster": "./media/hive/loop.jpg",
+        "alt": "Top-down Gazebo view of the HIVE arena with a quadrotor over the landing pad."
+      },
+      "hero": {
+        "type": "video",
+        "src": "./media/hive/run.mp4",
+        "poster": "./media/hive/run.jpg",
+        "alt": "Screen recording of a full HIVE mission: operator dashboard, Gazebo arena, and telemetry.",
+        "caption": "Full simulation run: “find the red box,” then “bring the red box back to the station” — plans, human approval, and a drone, ground robot, and arm executing in Gazebo with live telemetry."
+      },
       "facts": [
-        { "value": "3", "label": "robot classes: ground, aerial, manipulator" },
-        { "value": "25+", "label": "student members across four subteams" }
+        {
+          "value": "5/5",
+          "label": "red-box missions passed in simulation"
+        },
+        {
+          "value": "3",
+          "label": "robot types: PX4 quadrotor, TurtleBot3, OpenMANIPULATOR-X"
+        },
+        {
+          "value": "189.5 ms",
+          "label": "halt latency at cruise"
+        },
+        {
+          "value": "516",
+          "label": "tests, 0 failures"
+        }
       ],
-      "stack": ["ROS 2", "LLM agents", "Capability profiles", "Shared world model"],
-      "highlights": [
-        "Code-first onboarding: a robot's ROS 2 workspace becomes a structured capability profile — skills, interfaces, limits — that a human reviews before use.",
-        "Embodied agents expose only reviewed capabilities, so the Executive never assigns a robot a task it can't perform.",
-        "Safety-critical control stays local: the Executive coordinates tasks, and each robot keeps its own navigation, flight, manipulation, and stop logic."
+      "tldr": [
+        "What: onboard an unfamiliar robot straight from its ROS 2 workspace, then coordinate a mixed fleet from one natural-language mission.",
+        "How: a Composer turns URDF, launch files, and interfaces into a capability descriptor with file-and-line provenance; an Executive plans, validates in simulation, waits for human approval, and dispatches to capability-matched agents.",
+        "Result: 5 of 5 red-box retrieval missions passed in Gazebo with a quadrotor, a ground robot, and an arm — and the system refuses missions no robot in the fleet can perform."
       ],
-      "media": [
+      "problem": "Every robot in a mixed fleet speaks its own ROS 2 dialect, so adding one usually means weeks of bespoke integration code. HIVE's goal is to replace that with workspace analysis: read the robot's code, derive what it can safely do, and let a single planner coordinate ground, aerial, and manipulator robots from a plain-English mission.",
+      "steps": [
+        {
+          "title": "Composer reads the robot's code",
+          "text": "Static analysis of the URDF, launch-file ASTs, message interfaces, and ros_gz bridge config feeds a schema-forced LLM that drafts a Robot Capability Descriptor. Any capability without a file:line citation is rejected."
+        },
+        {
+          "title": "Executive plans and asks for approval",
+          "text": "The Executive snapshots the fleet, plans against named places, allocates steps by capability, validates the plan in simulation, and stops at a human approve/reject gate before anything moves.",
+          "media": {
+            "type": "image",
+            "src": "./media/hive/dash-gate.png",
+            "alt": "HIVE dashboard showing the plan for 'find the red box' with reasoning and Approve/Reject buttons.",
+            "caption": "Operator dashboard: the plan and its reasoning wait at the approval gate."
+          }
+        },
+        {
+          "title": "Agents execute with local safety",
+          "text": "Each robot runs a skill pack chosen by its morphology, with safety limits derived from its capability descriptor. The e-stop lives in a reentrant callback group and polls a cancel token every 0.1 s or faster, so a stop never queues behind a running skill.",
+          "media": {
+            "type": "image",
+            "src": "./media/hive/dash-running.png",
+            "alt": "HIVE dashboard with a scan pattern executing on the drone.",
+            "caption": "A scan pattern running on the quadrotor, tracked live in the dashboard."
+          }
+        },
+        {
+          "title": "Mission report and replay",
+          "text": "Observations fuse into a shared world model, and every run is recorded to MCAP for replay and audit.",
+          "media": {
+            "type": "image",
+            "src": "./media/hive/dash-report.png",
+            "alt": "HIVE dashboard mission report showing all steps complete.",
+            "caption": "Mission report: both steps succeeded in 5 min 01 s."
+          }
+        },
+        {
+          "title": "Designing the rover it will run on",
+          "text": "In parallel I designed a four-wheeled rover with a 5-axis arm on a turntable in Fusion 360 and sized its joints by calculation: the R2b J2 joint needs 56.52 N·m against 80.7 N·m usable, and the moving arm came in at 9.28 kg against a 6.7 kg budget — the overrun the next revision has to remove.",
+          "media": {
+            "type": "image",
+            "src": "./media/hive/rover-ref2.jpg",
+            "alt": "Fusion 360 render of the HIVE rover with its arm holding a box.",
+            "caption": "Rover design (Fusion 360 render)."
+          }
+        }
+      ],
+      "decisions": [
+        "Provenance is overwritten after the LLM step, so the model can't fabricate its own audit trail — every capability claim must point at a real file and line.",
+        "The planner is allowed to refuse: the Composer benchmark scores calibrated refusal, and a refused plan never reaches the approval gate.",
+        "Plans reference named places, never coordinates the LLM invents.",
+        "The e-stop runs in a reentrant group with a fast-polled cancel token rather than as a queued action, trading code simplicity for a stop that can't be blocked.",
+        "After Gazebo's DetachableJoint failed a one-hour spike, box attachment switched to pose-following — less physical, but reliable enough to test planning."
+      ],
+      "results": [
+        {
+          "value": "5/5",
+          "label": "red-box missions passed, full tear-down between runs (mean 411 s at real-time factor 0.015–0.037)",
+          "source": "HIVE repo, demo/red_box_v2/tally_results.md"
+        },
+        {
+          "value": "189.5 ms",
+          "label": "halt latency from cruise; drone scan cancel-to-return about 18 ms",
+          "source": "HIVE repo, AUDIT.md (F3, E3)"
+        },
+        {
+          "value": "516",
+          "label": "tests passing, 0 failures, 2 skipped",
+          "source": "HIVE repo, AUDIT.md (A2)"
+        },
+        {
+          "value": "3/3",
+          "label": "robot morphologies identified correctly by the Composer on ground-truthed workspaces",
+          "source": "HIVE repo, benchmark/README.md"
+        }
+      ],
+      "failures": [
+        {
+          "title": "Refusing an impossible mission",
+          "text": "When no robot in the fleet holds a reviewed ‘flight’ capability, a mission that needs flight is refused with the reason instead of producing a plan the fleet can’t execute.",
+          "media": {
+            "type": "image",
+            "src": "./media/hive/fleet-refused.png",
+            "alt": "HIVE dashboard: mission refused because no robot in the swarm has the flight capability required to scan the field.",
+            "caption": "“No robot in the swarm has the ‘flight’ capability required to perform a scan of the field.”"
+          }
+        },
+        {
+          "title": "Repeatability depends on a fresh stack",
+          "text": "Missions passed 5/5 on a freshly launched stack but only 3/6 across reset-script sweeps; stale simulator state is the open bug."
+        },
+        {
+          "title": "Benchmark coverage is thin",
+          "text": "Only 3 of 12 benchmark workspaces are ground-truthed so far, with one model — the Composer numbers are a start, not a verdict."
+        }
+      ],
+      "next": [
+        "Fix stale-state handling so missions pass on a reset stack, not only a fresh one.",
+        "Ground-truth the remaining 9 benchmark workspaces and test more than one model.",
+        "Cut the rover arm's mass back under budget, then build and test it with stabilizer feet down for far picks."
+      ],
+      "gallery": [
         {
           "type": "image",
-          "url": "./media/hive-poster.png",
-          "alt": "Still from the HIVE concept film: a mixed robot team sharing observations in a factory."
+          "src": "./media/hive/rover-farpick.jpg",
+          "alt": "Rover render reaching for a far pick.",
+          "caption": "Rover design: far-pick pose (render)."
+        },
+        {
+          "type": "image",
+          "src": "./media/hive/rover-current.jpg",
+          "alt": "Current rover design reference render.",
+          "caption": "Current rover design reference (render)."
+        },
+        {
+          "type": "image",
+          "src": "./media/hive/j2-section.png",
+          "alt": "Annotated cross-section of the J2 joint showing the gearbox cartridge, brake, and encoder.",
+          "caption": "J2 joint section: gearbox cartridge, brake, and encoder."
         },
         {
           "type": "video",
-          "url": "./media/hive-concept-90s.mp4",
-          "poster": "./media/hive-poster.png",
-          "captions": "./media/hive-captions.vtt",
-          "alt": "Animated concept film of HIVE coordinating ground, aerial, and manipulator robots.",
-          "caption": "Concept film — a 90-second walkthrough of how HIVE onboards robots and coordinates a mixed team."
+          "src": "./media/hive/concept.mp4",
+          "poster": "./media/hive/concept.jpg",
+          "alt": "Animated HIVE concept film.",
+          "caption": "Concept film — the full vision for HIVE, animated."
         }
       ],
-      "role": "Chief Engineer of CroLabs. I lead HIVE's architecture and technical direction across the software, electrical, mechanical, and drone subteams."
-    },
-    {
-      "id": "amphibious-robot",
-      "name": "Amphibious robot",
-      "repo": null,
-      "category": "Robotics",
-      "status": "Team project · Design",
-      "summary": "Structure and packaging for a CroLabs ring-frame robot designed to fly, drive, and swim.",
-      "description": "A CroLabs team robot built around four ring frames with enclosed propellers and a central electronics bay, designed to move through air, over ground, and through water with a single airframe. My part is the structure: the frame layout, component packaging, and the laser-cut frame that carries thrust, ground, and water loads.",
-      "facts": [
-        { "value": "3", "label": "domains: air, ground, water" },
-        { "value": "4", "label": "ring-frame propulsion units" },
-        { "value": "6", "label": "frame materials compared in the trade study" }
-      ],
-      "stack": ["Mechanical design", "CAD", "Packaging", "Laser cutting", "Trade study"],
-      "highlights": [
-        "Four ring frames enclose the propellers and tie into a laser-cut central structure.",
-        "Compute and power electronics sit in a central bay between the four rings.",
-        "A frame-material trade study ranks six sheet materials on stiffness and strength per weight, water durability, impact toughness, and in-house manufacturability."
-      ],
-      "documents": [
-        { "label": "Frame material trade study", "href": "#/study/amphibious-frame" }
-      ],
-      "media": [
+      "links": [
         {
-          "type": "image",
-          "url": "./media/amphibious-cad.png",
-          "alt": "CAD render of the ring-frame robot: four red ring frames with propellers around a central electronics bay.",
-          "caption": "CAD render: four ring frames with propellers around a central electronics bay."
-        }
-      ],
-      "role": "Structural design, component packaging, and the laser-cut frame."
-    },
-    {
-      "id": "autonomous-drone",
-      "name": "Drone Tracker · compact quadcopter",
-      "repo": "https://github.com/Bhavya007-17/autonomous-drone",
-      "category": "Robotics",
-      "status": "Design & analysis",
-      "summary": "A palm-sized ducted quadcopter designed to follow a subject with GPS and film from a tilt gimbal — CAD, packaging, and frame FEA in Fusion 360.",
-      "description": "Drone Tracker is a roughly 140 mm cinewhoop-style quadcopter designed around a SpeedyBee F7 Mini running Betaflight, a Be-180 GPS for follow and position hold, ELRS radio control, and a camera on a single-axis tilt gimbal. Its CINEC 25.1.2 ducted frame was analyzed in Fusion 360 Simulation under a 400 g total-thrust load case: peak von Mises stress was 1.96 MPa, and the ducts and prop guards turned out to carry load alongside the frame rather than only protecting the props.",
-      "facts": [
-        { "value": "1.96 MPa", "label": "peak von Mises stress, 400 g thrust case" },
-        { "value": "~140 mm", "label": "frame span" },
-        { "value": "33", "label": "parts in the bill of materials" }
-      ],
-      "stack": ["Fusion 360", "Fusion Simulation (FEA)", "Betaflight", "SpeedyBee F7 Mini", "ELRS"],
-      "highlights": [
-        "Static FEA in carbon fiber: central top deck fixed, four upward 0.98 N loads at the motor bells, 1.33 million tetrahedral elements.",
-        "A frame-only baseline showed much higher peak stress than the full assembly — the ducts and prop guards are primary load-sharing members.",
-        "Every flight-controller port is assigned: GPS on UART2, ELRS on UART3, VTX control on UART4, gimbal servo on PWM5.",
-        "Impact loading is the next analysis case."
-      ],
-      "media": [
-        {
-          "type": "image",
-          "url": "./media/drone-cad.jpg",
-          "alt": "Fusion 360 render of the ducted quadcopter: four ring guards, flight stack, camera gimbal, and red landing feet.",
-          "caption": "Fusion 360 assembly: CINEC 25.1.2 ducted frame with flight stack, camera gimbal, and landing feet."
-        },
-        {
-          "type": "image",
-          "url": "./media/drone-fea.png",
-          "wide": true,
-          "alt": "Von Mises stress plot of the frame in Fusion 360: four upward arrows at the motor mounts, central top deck fixed, maximum 1.955 MPa.",
-          "caption": "Static FEA, carbon fiber: central top deck fixed; four upward 0.98 N motor loads; peak von Mises stress 1.96 MPa."
+          "label": "CroLabs team page",
+          "url": "https://www.vtcro.org/teams/crolabs",
+          "kind": "doc"
         }
       ]
     },
     {
       "id": "robotic-arm",
       "name": "Natural-language robotic arm",
-      "repo": "https://github.com/Bhavya007-17/robotic-arm",
-      "category": "Robotics",
       "status": "Complete (simulation)",
-      "summary": "Speak or type a command, and a language agent turns it into pick-and-place on a simulated 7-DOF Franka Panda.",
-      "description": "Hold the mic button and say “put the green box on the shelf,” or type it. faster-whisper transcribes speech locally on the CPU, a local parser handles common phrasing, and NVIDIA NIM tool calling resolves ambiguous requests. The agent sequences look, find, pick, and place skills, and mink differential IK drives a 7-DOF Franka Panda in MuJoCo. Object poses come from simulator state, and grasps use a weld constraint.",
+      "role": "Sole developer",
+      "team": "Solo",
+      "timeline": "Jun – Aug 2026",
+      "domains": [
+        "Software"
+      ],
+      "summary": "Say or type “put the blue box on the shelf,” and a language agent drives a simulated 7-DOF Franka Panda to do it.",
+      "chips": [
+        "Speech → pick-and-place",
+        "5.0× real-time local STT",
+        "MuJoCo · Franka Panda"
+      ],
+      "card": {
+        "type": "video",
+        "src": "./media/robotic-arm/loop.mp4",
+        "poster": "./media/robotic-arm/loop.jpg",
+        "alt": "Simulated Franka Panda picking up a colored cube in MuJoCo."
+      },
+      "hero": {
+        "type": "video",
+        "src": "./media/robotic-arm/voice-command.mp4",
+        "poster": "./media/robotic-arm/voice-command.jpg",
+        "alt": "MuJoCo recording: a spoken command is transcribed and the Panda places the blue box on the shelf.",
+        "caption": "Synthesized speech → faster-whisper (local CPU) → agent → simulated Panda. The transcript and its timing on screen come from this run."
+      },
       "facts": [
-        { "value": "5.0×", "label": "real-time speech-to-text on a CPU" },
-        { "value": "7-DOF", "label": "Franka Panda in MuJoCo" },
-        { "value": "4", "label": "colored objects to pick and place" }
+        {
+          "value": "5.0×",
+          "label": "real-time speech-to-text on a CPU"
+        },
+        {
+          "value": "1.58 s",
+          "label": "to transcribe the command in the clip above"
+        },
+        {
+          "value": "7-DOF",
+          "label": "Franka Panda in MuJoCo"
+        },
+        {
+          "value": "27",
+          "label": "voice-pipeline tests"
+        }
       ],
-      "stack": ["Python", "MuJoCo", "mink IK", "faster-whisper", "NVIDIA NIM", "Tkinter"],
-      "highlights": [
-        "Local push-to-talk speech: 2.6 s of speech transcribed in 0.53 s on a CPU, with no cloud speech service.",
-        "Transcripts that are too short, low-confidence, or known Whisper hallucinations are dropped before they reach the arm.",
-        "Scene and wrist camera views answer questions about the scene through NIM vision."
+      "tldr": [
+        "What: a manipulation agent that turns plain-English speech or text into pick-and-place on a simulated Franka Panda.",
+        "How: push-to-talk audio is transcribed locally with faster-whisper, a local parser or NVIDIA NIM tool calling maps it to look/find/pick/place skills, and mink differential IK moves the arm.",
+        "Result: spoken and typed commands drive pick-and-place of four colored cubes, with garbage audio rejected before it can reach the robot."
       ],
-      "media": [
+      "problem": "Language interfaces for robots fail in two dull ways: they hallucinate commands from silence, and they hide the cases where the robot can't do what was asked. The goal was a speech-to-motion loop that runs locally, rejects audio it isn't sure about, and reports failures instead of retrying silently.",
+      "steps": [
+        {
+          "title": "Listen locally",
+          "text": "Hold the mic button: audio is recorded at 16 kHz and transcribed on the CPU with faster-whisper (base.en, int8). Nothing is streamed anywhere."
+        },
+        {
+          "title": "Turn words into skills",
+          "text": "A fast local parser handles common phrasing with no API call; ambiguous requests go to NVIDIA NIM tool calling, which chooses among look, find, pick, and place.",
+          "media": {
+            "type": "image",
+            "src": "./media/robotic-arm/chat-ui.png",
+            "alt": "Arm control UI with external and wrist camera feeds and a tool-call transcript.",
+            "caption": "Control UI: scene and wrist cameras beside the agent's tool calls."
+          }
+        },
+        {
+          "title": "Move with differential IK",
+          "text": "mink differential IK, with a damped-least-squares fallback, drives the arm to each target pose read from the simulator.",
+          "media": {
+            "type": "video",
+            "src": "./media/robotic-arm/demo.mp4",
+            "poster": "./media/robotic-arm/demo.jpg",
+            "alt": "MuJoCo recording of typed commands moving cubes onto the shelf.",
+            "caption": "Typed commands, recorded from the simulation: the banner shows the command and the skill running."
+          }
+        },
+        {
+          "title": "Grasp and place",
+          "text": "The gripper closes, a weld constraint attaches the cube, and the arm places it on the shelf.",
+          "media": {
+            "type": "image",
+            "src": "./media/robotic-arm/holding.jpg",
+            "alt": "Panda holding the red cube.",
+            "caption": "Mid-task: the Panda carrying the red cube."
+          }
+        }
+      ],
+      "decisions": [
+        "Push-to-talk instead of an always-on microphone: the arm only listens when asked, and nothing leaves the machine.",
+        "A silence guard before the agent — at least 0.3 s of audio, no_speech_prob ≤ 0.6, avg_logprob ≥ −1.0, and a hallucination blocklist — because Whisper invents words like “Thank you.” on near-silence, and sending those to a robot arm is not acceptable.",
+        "Voice is only a new text source; the agent, skills, and simulation stayed untouched, so the speech layer can't break manipulation.",
+        "Grasps use a weld constraint rather than contact friction — a deliberate simplification so the work stays on language-to-action, stated openly."
+      ],
+      "results": [
+        {
+          "value": "0.53 s",
+          "label": "to transcribe 2.61 s of speech (5.0× real time), base.en int8 on an Intel Core Ultra 9 CPU",
+          "source": "robotic-arm README"
+        },
+        {
+          "value": "1.58 s",
+          "label": "transcription time for the spoken command in the clip above",
+          "source": "Recorded run, Oct 2026"
+        },
+        {
+          "value": "27",
+          "label": "tests covering recording, transcription gates, and blocklist",
+          "source": "robotic-arm test_voice.py"
+        }
+      ],
+      "failures": [
+        {
+          "title": "Unreachable cubes are reported, not hidden",
+          "text": "Randomized cubes sometimes land outside the arm's workspace; the agent says so instead of silently retrying.",
+          "media": {
+            "type": "image",
+            "src": "./media/robotic-arm/failure-unreachable.png",
+            "alt": "Arm UI showing the error 'Gripper could not reach box_red'.",
+            "caption": "“Gripper could not reach box_red.”"
+          }
+        },
+        {
+          "title": "Poses come from the simulator",
+          "text": "Object poses are read as simulator ground truth, not perceived from the cameras — it is a language-conditioned agent over scripted skills, not a vision-language-action model."
+        }
+      ],
+      "next": [
+        "Estimate object poses from the wrist camera instead of simulator state.",
+        "A ROS 2 bridge to drive a physical arm with the same agent."
+      ],
+      "gallery": [
         {
           "type": "image",
-          "url": "./media/arm-holding.png",
-          "alt": "Franka Panda model holding a red box in the MuJoCo simulation.",
-          "caption": "Mid-task: the Panda carrying the red box."
+          "src": "./media/robotic-arm/scene.jpg",
+          "alt": "MuJoCo scene: Panda, table, shelf, and four colored cubes.",
+          "caption": "The scene: four colored cubes, a table, and a shelf."
         },
         {
           "type": "image",
-          "url": "./media/arm-placed.png",
-          "alt": "Red box placed on the shelf after the simulated pick-and-place.",
-          "caption": "Done: the red box on the shelf."
+          "src": "./media/robotic-arm/wrist.jpg",
+          "alt": "Wrist camera view above the cubes.",
+          "caption": "Wrist camera view."
+        },
+        {
+          "type": "image",
+          "src": "./media/robotic-arm/placed.jpg",
+          "alt": "Red cube placed on the shelf.",
+          "caption": "Done: the red cube on the shelf."
+        }
+      ],
+      "links": [
+        {
+          "label": "Code on GitHub",
+          "url": "https://github.com/Bhavya007-17/robotic-arm",
+          "kind": "code"
+        }
+      ]
+    },
+    {
+      "id": "amphibious-robot",
+      "name": "Amphibious ring-frame robot",
+      "status": "Prototype · Team project",
+      "role": "Structural design, component packaging, and the laser-cut frame",
+      "team": "CroLabs team",
+      "timeline": "Spring 2026",
+      "domains": [
+        "Mechanical"
+      ],
+      "summary": "One airframe designed to fly, drive, and swim, built around four ring ducts that tilt on high-torque servos.",
+      "chips": [
+        "Ring-duct prototype built",
+        "Frame material trade study",
+        "Fly · drive · swim design"
+      ],
+      "card": {
+        "type": "video",
+        "src": "./media/amphibious-robot/loop.mp4",
+        "poster": "./media/amphibious-robot/loop.jpg",
+        "alt": "Red 3D-printed ring duct around a brushless motor and propeller, mounted on its servo on the bench."
+      },
+      "hero": {
+        "type": "video",
+        "src": "./media/amphibious-robot/tilt-test.mp4",
+        "poster": "./media/amphibious-robot/tilt-test.jpg",
+        "alt": "Bench footage of the prototype ring-duct module: a red 3D-printed ring around a motor and propeller on its servo mount.",
+        "caption": "Prototype ring-duct module on the bench: 3D-printed ring, brushless motor, and propeller on its servo mount."
+      },
+      "facts": [
+        {
+          "value": "4",
+          "label": "tilting ring ducts"
+        },
+        {
+          "value": "3",
+          "label": "domains in one airframe: air, ground, water"
+        },
+        {
+          "value": "6",
+          "label": "frame materials compared in the trade study"
+        }
+      ],
+      "tldr": [
+        "What: a CroLabs robot that uses one structure for flight, driving, and swimming.",
+        "How: four ring ducts with brushless motors and propellers mount on servo-driven tilt joints around a central electronics bay, tied together by a laser-cut frame.",
+        "Result: the tilt mechanism is built and running on the bench, and a six-material trade study sets the frame material path from prototype to flight frame."
+      ],
+      "problem": "A robot that crosses air, ground, and water usually carries three propulsion systems, and the extra mass kills flight time. Tilting ring ducts let the same motors and structure serve every mode — which puts the whole burden on a frame that must be light, stiff, waterproof, and survive impacts.",
+      "steps": [
+        {
+          "title": "Lay out the airframe",
+          "text": "Four ring frames carry the propellers around a central electronics bay, with servos at each ring's tilt axis.",
+          "media": {
+            "type": "image",
+            "src": "./media/amphibious-robot/cad-iso.jpg",
+            "alt": "CAD view of the four ring frames, servos, and central deck.",
+            "caption": "CAD layout of the ring frames and central bay."
+          }
+        },
+        {
+          "title": "Build the drivetrain on the bench",
+          "text": "Brushless motors, 25 kg servos, and the control electronics go together on 3D-printed arms for bench testing.",
+          "media": {
+            "type": "image",
+            "src": "./media/amphibious-robot/bench.jpg",
+            "alt": "Bench prototype with black 3D-printed arms, brushless motors, servos, and wiring.",
+            "caption": "Bench prototype: printed arms, brushless motors, 25 kg servos, and control electronics."
+          }
+        },
+        {
+          "title": "Build and test the ring-duct module",
+          "text": "Each ring duct is a 3D-printed ring around a brushless motor and propeller, carried on a servo so it can tilt between flight and driving orientations; on the bench it was driven from vertical to horizontal."
+        },
+        {
+          "title": "Choose the frame material",
+          "text": "A trade study scores six sheet materials on stiffness and strength per mass, water durability, impact toughness, in-house manufacturability, and cost, with a sensitivity check on the weights."
+        }
+      ],
+      "decisions": [
+        "Prototype frames in sealed birch plywood: it has the best bending stiffness per unit mass of the six sheets compared and cuts cleanly on the in-house CO₂ laser.",
+        "Move the flight frame to carbon-fiber plate once CNC routing is available — it ranks first whenever machining can be outsourced or water exposure dominates.",
+        "Use acetal for splash-zone brackets and parts that take direct hits: it is waterproof, laser-cuttable, and the toughest option in a crash."
+      ],
+      "results": [
+        {
+          "value": "Bench test",
+          "label": "ring-duct module tilted from vertical to horizontal on its servo",
+          "source": "Bench test footage, May 2026"
+        },
+        {
+          "value": "3.85 / 5",
+          "label": "sealed plywood's weighted score, first of six at baseline weights",
+          "source": "Frame material trade study"
+        },
+        {
+          "value": "4.08 / 5",
+          "label": "carbon fiber's score when machining is outsourced, first under that weighting",
+          "source": "Frame material trade study"
+        }
+      ],
+      "next": [
+        "Tilt sequencing across all four rings on the full airframe.",
+        "First flight and mode-transition tests.",
+        "Seal the frame and test it in water."
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "src": "./media/amphibious-robot/cad-top.jpg",
+          "alt": "Top-down CAD view of the rings, servos, and electronics deck.",
+          "caption": "Top view: rings, servos, and electronics deck."
+        },
+        {
+          "type": "image",
+          "src": "./media/amphibious-robot/cad-render.jpg",
+          "alt": "CAD render of the robot with its four red rings tilted upright like wheels.",
+          "caption": "Full-robot CAD render with the rings tilted upright."
+        }
+      ],
+      "links": [],
+      "documents": [
+        {
+          "label": "Frame material trade study",
+          "href": "#/study/amphibious-frame"
         }
       ]
     },
     {
       "id": "ros2-micromouse-sync",
-      "name": "ROS 2 micromouse",
-      "repo": "https://github.com/Bhavya007-17/ros2-micromouse-sync",
-      "category": "Autonomy",
+      "name": "Micromouse explorer",
       "status": "Complete (simulation)",
-      "summary": "A ROS 2 flood-fill planner that drives the mms micromouse simulator and a Gazebo robot in lockstep.",
-      "description": "One flood-fill solution drives two simulators at once. A generated 16 × 16 maze feeds the planner, which computes a distance field over the maze and walks the gradient to the goal. Moves go to the mms interface over its text protocol and, through a ROS 2 cell-motion controller, to a Gazebo Harmonic robot that mirrors each step with exact pose updates.",
+      "role": "Sole developer",
+      "team": "Solo",
+      "timeline": "Jun – Aug 2026",
+      "domains": [
+        "Software"
+      ],
+      "summary": "A ROS 2 micromouse that gets no map: it senses walls with LiDAR, tracks itself with odometry, builds the maze as it goes, then speed-runs its own learned map.",
+      "chips": [
+        "Unseen maze, no map",
+        "LiDAR + odometry, closed loop",
+        "163 tests"
+      ],
+      "card": {
+        "type": "video",
+        "src": "./media/ros2-micromouse-sync/loop.mp4",
+        "poster": "./media/ros2-micromouse-sync/loop.jpg",
+        "alt": "Belief map filling in beside the true maze as the robot explores."
+      },
+      "hero": {
+        "type": "video",
+        "src": "./media/ros2-micromouse-sync/explorer-quad.mp4",
+        "poster": "./media/ros2-micromouse-sync/explorer-quad.jpg",
+        "alt": "Four synchronized views of one run: belief map, true maze, Gazebo, and RViz.",
+        "caption": "One closed-loop run, four views: the robot's belief, the true maze, Gazebo, and RViz with the LiDAR scan and odometry trail."
+      },
       "facts": [
-        { "value": "16 × 16", "label": "generated mazes" },
-        { "value": "2", "label": "simulators driven in sync" },
-        { "value": "9", "label": "unit tests" }
-      ],
-      "stack": ["ROS 2 Jazzy", "Python", "Gazebo Harmonic", "mackorone/mms"],
-      "highlights": [
-        "Planning logic is decoupled from both simulators through ROS 2 topics.",
-        "Unit tests cover maze generation, the flood-fill gradient, the mms file format, and planner tie-breaking.",
-        "Plans on a known maze; Gazebo follows each cell move with exact pose updates."
-      ],
-      "media": [
         {
-          "type": "image",
-          "url": "./media/micromouse-map.png",
-          "alt": "Solved micromouse maze showing the route through a 16 by 16 grid.",
-          "caption": "mms view: flood-fill distances and the solved route through a 16 × 16 maze."
+          "value": "50 · 50 · 50",
+          "label": "moves to search, return, and speed-run a 10×10 maze whose shortest path is 50"
         },
         {
+          "value": "163",
+          "label": "tests across 30 seeds"
+        },
+        {
+          "value": "96%",
+          "label": "coverage on the new pure modules"
+        }
+      ],
+      "tldr": [
+        "What: a micromouse stack where the robot starts with no map and has to discover the maze it is solving.",
+        "How: a ray-marched LaserScan feeds a tri-state belief map; flood-fill re-plans after every cell while a ROS 2 controller drives /cmd_vel and closes the loop on /odom in Gazebo Harmonic.",
+        "Result: on a seeded 10×10 maze it searches, returns, and speed-runs in 50 moves each — the true shortest path."
+      ],
+      "problem": "The first version solved the maze from a god's-eye view: the planner read the walls from a file and the robot just replayed the answer. It discovered nothing. The rebuild takes the map away — the robot has to sense, believe, and re-plan like a real micromouse.",
+      "steps": [
+        {
+          "title": "Split what the robot may know",
+          "text": "The maze generator writes a public spec (size, start, goal — no walls) and a separate truth file. The brain can only read the spec; a test scans the source to prove it never opens the truth."
+        },
+        {
+          "title": "Sense walls",
+          "text": "A LiDAR node ray-marches the true maze into a real sensor_msgs/LaserScan. The brain waits for a settled scan after every move before updating its belief.",
+          "media": {
+            "type": "video",
+            "src": "./media/ros2-micromouse-sync/exploration.mp4",
+            "poster": "./media/ros2-micromouse-sync/exploration.jpg",
+            "alt": "Belief map filling in beside the true maze during exploration.",
+            "caption": "Belief (left) versus truth (right) as the explorer searches."
+          }
+        },
+        {
+          "title": "Believe and re-plan",
+          "text": "Every wall is UNKNOWN, WALL, or OPEN. Flood-fill re-runs over the belief after each cell: optimistic while searching, pessimistic for the final speed run.",
+          "media": {
+            "type": "image",
+            "src": "./media/ros2-micromouse-sync/flood-fill.png",
+            "alt": "mms view of flood-fill distances and the solved route.",
+            "caption": "Flood-fill distances in the mms simulator."
+          }
+        },
+        {
+          "title": "Drive closed loop",
+          "text": "A cell-motion controller turns each move into /cmd_vel commands and reads position back from /odom, with absolute turn targets anchored from odometry to the world frame."
+        }
+      ],
+      "decisions": [
+        "Wait for a settled scan, not just the next one — a scan captured mid-move corrupts the map, so the brain checks the robot has stopped before trusting the reading.",
+        "Tri-state belief instead of “no wall until seen”: the planner can be optimistic about UNKNOWN while searching and pessimistic before the speed run.",
+        "Absolute turn targets anchored once from odometry to the world, so heading errors don't accumulate across turns.",
+        "The original omniscient solver stays in the repo as a baseline to compare against.",
+        "The ray-cast LiDAR is the default because Gazebo's gpu_lidar publishes nothing without a GPU; lidar:=gz swaps it back."
+      ],
+      "results": [
+        {
+          "value": "50 · 50 · 50",
+          "label": "search, return, and speed-run moves on a seeded 10×10 maze with a 50-move optimum",
+          "source": "ros2-micromouse-sync README"
+        },
+        {
+          "value": "31",
+          "label": "moves on the 8×8 four-view run — the true optimum",
+          "source": "ros2-micromouse-sync README"
+        },
+        {
+          "value": "163",
+          "label": "tests across 30 seeds; 96% coverage on the new pure modules",
+          "source": "ros2-micromouse-sync README"
+        }
+      ],
+      "failures": [
+        {
+          "title": "The LiDAR can't prove drift rejection yet",
+          "text": "The ray-cast sensor uses the controller's own pose estimate, so it can't catch odometry drift — a real sensor model is needed to test that."
+        },
+        {
+          "title": "A blank Gazebo that wasn't a GPU problem",
+          "text": "Under WSL the 3D view stayed empty. The fix was naming the ogre2 render engine in the world file — not the GPU limitation the design doc had first assumed."
+        }
+      ],
+      "next": [
+        "Add sensor noise and wheel slip so drift rejection is actually tested.",
+        "Run the same brain on a physical micromouse."
+      ],
+      "gallery": [
+        {
           "type": "video",
-          "url": "./media/micromouse-demo.mp4",
-          "alt": "Screen recording of the mms solver and the Gazebo robot moving in sync.",
-          "caption": "Screen recording: the mms solver and the Gazebo robot moving in sync."
-        }
-      ]
-    },
-    {
-      "id": "jarvis-agentic-orchestrator",
-      "name": "Jarvis · agent orchestrator",
-      "repo": "https://github.com/Bhavya007-17/jarvis-agentic-orchestrator",
-      "category": "AI",
-      "status": "Software prototype",
-      "summary": "A local-first assistant on OpenJarvis that routes each task to the right model, convenes a planning council for hard problems, and calls tools over MCP.",
-      "description": "Jarvis is built on OpenJarvis (Apache-2.0), vendored unmodified. My work is the integration layer: a FastAPI sidecar that wires routing, a planning council, a user-drawn agent graph, memory, MCP tools, and voice into the OpenJarvis LiteLLM engine. Every model call takes one path with a fallback ladder — an NVIDIA NIM model, a second NIM model, Gemini Flash, then local Ollama.",
-      "facts": [
-        { "value": "4", "label": "rungs in the model fallback ladder" },
-        { "value": "3", "label": "models in the planning council" },
-        { "value": "174", "label": "web tests, network and LLM calls mocked" }
-      ],
-      "stack": ["Python", "OpenJarvis", "LiteLLM", "NVIDIA NIM", "FastAPI", "MCP", "faster-whisper"],
-      "highlights": [
-        "Fallback ladder with exponential backoff and rate-limit handling across NIM, Gemini, and local Ollama.",
-        "Three-model planning council: parallel proposals, a reasoning-model critique, one synthesized plan.",
-        "A 174-test web suite covers the sidecar, router, council, graph, memory, voice, vision, and tools, with network, LLM, and camera calls mocked."
-      ],
-      "media": [
-        {
-          "type": "image",
-          "url": "./media/jarvis-agents.png",
-          "alt": "Jarvis agent-graph view with agent-to-agent edges.",
-          "caption": "Agent graph: draw agent-to-agent edges and Jarvis runs them in topological order."
+          "src": "./media/ros2-micromouse-sync/known-map-demo.mp4",
+          "poster": "./media/ros2-micromouse-sync/known-map-demo.jpg",
+          "alt": "Earlier known-map baseline: mms and Gazebo solving a 16×16 maze in sync.",
+          "caption": "The original known-map baseline, kept for comparison."
         }
       ],
-      "relatedTitle": "Built on",
-      "relatedLinks": [
+      "links": [
         {
-          "label": "OpenJarvis — the open-source backbone (Apache-2.0)",
-          "url": "https://github.com/open-jarvis/OpenJarvis"
+          "label": "Code on GitHub",
+          "url": "https://github.com/Bhavya007-17/ros2-micromouse-sync",
+          "kind": "code"
         }
       ]
     },
     {
       "id": "act-training",
       "name": "Robot learning with ACT",
-      "repo": "https://github.com/Bhavya007-17/so101-act-training",
-      "category": "AI",
       "status": "Paused (Sep 2026)",
-      "summary": "A reproducible LeRobot ACT training pipeline on SO-101 data, with a 10,000-step run and verified checkpoint reload.",
-      "description": "A locked LeRobot 0.5.0 environment on WSL2 trained an Action Chunking Transformer for 10,000 steps on the public SO-101 pick-and-place dataset, then reloaded the checkpoint in a fresh process and ran GPU inference. Two 80-episode simulated SO-101 datasets in LeRobot v3 format, recorded in MuJoCo with a scripted expert, are ready for the next stage. The work was paused in September 2026 before task-success evaluation.",
+      "role": "Sole developer",
+      "team": "Solo",
+      "timeline": "Aug – Sep 2026",
+      "domains": [
+        "Learning"
+      ],
+      "summary": "A reproducible LeRobot pipeline for SO-101 imitation learning: a 10,000-step ACT run with verified checkpoint reload, and two 80-episode simulated datasets from a scripted expert.",
+      "chips": [
+        "10,000-step ACT run",
+        "2 × 80 sim demonstrations",
+        "51.6 M-parameter policy"
+      ],
+      "card": {
+        "type": "video",
+        "src": "./media/act-training/loop.mp4",
+        "poster": "./media/act-training/loop.jpg",
+        "alt": "Simulated SO-101 arm picking a red cube into a box."
+      },
+      "hero": {
+        "type": "video",
+        "src": "./media/act-training/episodes.mp4",
+        "poster": "./media/act-training/episodes.jpg",
+        "alt": "Simulated SO-101 arm performing scripted pick-and-place episodes in MuJoCo.",
+        "caption": "Scripted-expert demonstrations recorded in MuJoCo for the dataset — demonstrations, not a learned policy."
+      },
       "facts": [
-        { "value": "10,000", "label": "ACT training steps" },
-        { "value": "2 × 80", "label": "simulated episodes recorded" }
-      ],
-      "stack": ["Python", "LeRobot 0.5.0", "PyTorch", "CUDA 12.8", "ACT", "SO-101"],
-      "highlights": [
-        "10,000 of 10,000 training steps completed, exit code 0.",
-        "Checkpoint reload and GPU inference verified in a separate process.",
-        "Two scripted-expert MuJoCo datasets: 8,083 and 7,794 frames at 30 fps."
-      ],
-      "media": [],
-      "relatedTitle": "Datasets",
-      "relatedLinks": [
         {
-          "label": "SO-101 sim dataset, task 1 — 80 episodes",
-          "url": "https://github.com/Bhavya007-17/p1-so101-sim-t1"
+          "value": "67.2 min",
+          "label": "10,000-step ACT training run"
         },
         {
-          "label": "SO-101 sim dataset, task 2 — 80 episodes",
-          "url": "https://github.com/Bhavya007-17/p1-so101-sim-t2"
+          "value": "0.161",
+          "label": "final training loss"
+        },
+        {
+          "value": "6,664 MiB",
+          "label": "peak VRAM at batch 12, bf16"
+        },
+        {
+          "value": "80 / 152",
+          "label": "expert episodes kept in task 1 (53%)"
+        }
+      ],
+      "tldr": [
+        "What: the toolchain for an imitation-learning study on the SO-101 arm, built so later failures can be blamed on data, not setup.",
+        "How: a locked LeRobot 0.5.0 environment on WSL2 and a Blackwell GPU, a measured batch-size probe, bf16 training, a fresh-process reload check, and a MuJoCo scripted expert that writes LeRobot v3 datasets.",
+        "Result: 10,000 of 10,000 steps with 0 mismatched tensors on reload, plus 160 checker-passed demonstrations with every failed attempt logged."
+      ],
+      "problem": "Imitation-learning comparisons fall apart when the environment is the variable nobody controls. Before comparing an LLM agent, ACT, and SmolVLA on the same tasks, the setup itself had to be proven — and the comparison protocol frozen before any result existed.",
+      "steps": [
+        {
+          "title": "Lock the environment",
+          "text": "uv lockfile, PyTorch 2.10 with CUDA 12.8 for the Blackwell sm_120 GPU, and a CUDA check before anything trains."
+        },
+        {
+          "title": "Probe before training",
+          "text": "The video decoder path is proven by call counts (34 torchcodec, 0 pyav), and a batch-size probe from 2 to 16 picks the largest safe batch."
+        },
+        {
+          "title": "Train and reload",
+          "text": "ACT trains for 10,000 steps in bf16; a separate process reloads the checkpoint and runs GPU inference to prove the artifact is usable."
+        },
+        {
+          "title": "Generate demonstrations",
+          "text": "A MuJoCo scripted expert with mink IK approaches, grasps, transports, and releases; only checker-passed episodes are kept, and every failed attempt is logged with its reason."
+        }
+      ],
+      "decisions": [
+        "Pick the public dataset by format version, not popularity, so the loader matches LeRobot 0.5.0 exactly.",
+        "Batch 12 instead of 16: 16 hit 92% VRAM occupancy and left no room for allocator fragmentation.",
+        "bf16 through Accelerate instead of the --policy.use_amp flag, which is inert for training in LeRobot 0.5.0 — 13% less wall-clock time.",
+        "Absolute joint targets rather than end-effector deltas for the expert's actions.",
+        "Protocol frozen on 2026-08-06 with a dated deviations log, before any result."
+      ],
+      "results": [
+        {
+          "value": "10,000 / 10,000",
+          "label": "training steps in 4,029 s, exit code 0; 51,597,190 parameters",
+          "source": "so101-act-training RESULTS.md"
+        },
+        {
+          "value": "153 / 0",
+          "label": "tensors reloaded / mismatched in the fresh-process check",
+          "source": "so101-act-training RESULTS.md"
+        },
+        {
+          "value": "80 of 152",
+          "label": "task-1 expert attempts kept (53%); task 2: 80 of 181 (44%)",
+          "source": "p1-so101-sim-t1 and -t2 READMEs"
+        },
+        {
+          "value": "81 / 81",
+          "label": "expert reachability checks passed",
+          "source": "so101-act-training EXPERT.md"
+        }
+      ],
+      "failures": [
+        {
+          "title": "Loss isn't success",
+          "text": "The policy was never evaluated in an environment or on a robot — a final loss of 0.161 says nothing about task success. The work paused in September 2026 before that evaluation."
+        },
+        {
+          "title": "The expert has blind spots",
+          "text": "Grasps are imposed by a weld, not physically simulated, and the expert covers a subset of the workspace — two of nine grid cells are empty in task 1."
+        }
+      ],
+      "next": [
+        "Evaluate ACT success rate in simulation against the frozen protocol.",
+        "Teleoperated data on hardware, then the SmolVLA comparison."
+      ],
+      "gallery": [],
+      "links": [
+        {
+          "label": "Code on GitHub",
+          "url": "https://github.com/Bhavya007-17/so101-act-training",
+          "kind": "code"
+        },
+        {
+          "label": "Dataset: task 1 (80 episodes)",
+          "url": "https://github.com/Bhavya007-17/p1-so101-sim-t1",
+          "kind": "data"
+        },
+        {
+          "label": "Dataset: task 2 (80 episodes)",
+          "url": "https://github.com/Bhavya007-17/p1-so101-sim-t2",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "id": "autonomous-drone",
+      "name": "Drone Tracker",
+      "status": "Design & analysis",
+      "role": "Sole designer",
+      "team": "Solo",
+      "timeline": "Jun – Jul 2026",
+      "domains": [
+        "Mechanical"
+      ],
+      "summary": "A palm-sized ducted quadcopter designed to follow a subject with GPS and film from a tilt gimbal — CAD, packaging, and frame FEA in Fusion 360.",
+      "chips": [
+        "1.96 MPa peak stress",
+        "1.18 mm max deflection",
+        "33-part BOM · $412.83"
+      ],
+      "card": {
+        "type": "image",
+        "src": "./media/autonomous-drone/render.jpg",
+        "alt": "Fusion 360 render of the ducted quadcopter with flight stack, gimbal, and red landing feet."
+      },
+      "hero": {
+        "type": "image",
+        "src": "./media/autonomous-drone/render.jpg",
+        "alt": "Fusion 360 render of the ducted quadcopter with flight stack, gimbal, and red landing feet.",
+        "caption": "Fusion 360 assembly: CINEC 25.1.2 ducted frame with flight stack, camera gimbal, and landing feet."
+      },
+      "facts": [
+        {
+          "value": "1.96 MPa",
+          "label": "peak von Mises stress, 400 g thrust case"
+        },
+        {
+          "value": "1.18 mm",
+          "label": "maximum displacement"
+        },
+        {
+          "value": "1.33 M",
+          "label": "tetrahedral elements"
+        },
+        {
+          "value": "$412.83",
+          "label": "33-part bill of materials"
+        }
+      ],
+      "tldr": [
+        "What: a ~140 mm cinewhoop-style camera drone designed around a SpeedyBee F7 Mini, GPS follow, ELRS control, and a single-axis tilt gimbal.",
+        "How: full packaging in Fusion 360, then a static FEA of the carbon-fiber frame under a 400 g thrust case, comparing frame-only and full-assembly models.",
+        "Result: 1.96 MPa peak stress and 1.18 mm max displacement, with the ducts and prop guards shown to carry load alongside the frame."
+      ],
+      "problem": "A palm-sized drone that follows and films someone has to fit a GPS, gimbal, FPV stack, and battery inside roughly 140 mm. The analysis goal was to find where the frame is actually stressed so it can be reinforced or lightened deliberately rather than by guesswork.",
+      "steps": [
+        {
+          "title": "Package the drone",
+          "text": "Flight controller, ESC, GPS, receiver, VTX, camera gimbal, and battery are laid out in Fusion 360 around the ducted frame, with every flight-controller port assigned.",
+          "media": {
+            "type": "image",
+            "src": "./media/autonomous-drone/cad-top.jpg",
+            "alt": "Top view of the drone CAD assembly.",
+            "caption": "Top view of the assembly."
+          }
+        },
+        {
+          "title": "Simplify for analysis",
+          "text": "About 1,600 bodies are cut down to the structural parts; non-load-bearing electronics come out so bonded contacts don't leave hundreds of unconstrained groups."
+        },
+        {
+          "title": "Apply the load case",
+          "text": "Carbon fiber, the central top deck fixed, and 0.98 N upward at each motor bell — 400 g total, about twice hover thrust for a ~200 g craft — on a 12 mm tetrahedral mesh.",
+          "media": {
+            "type": "image",
+            "src": "./media/autonomous-drone/fea-von-mises.png",
+            "alt": "Von Mises stress plot with four upward load arrows and a maximum of 1.955 MPa.",
+            "caption": "Static FEA: central top deck fixed, four upward 0.98 N motor loads, peak 1.96 MPa."
+          }
+        },
+        {
+          "title": "Compare frame-only and full assembly",
+          "text": "A frame-only model shows much higher peak stress than the full assembly: the ducts and prop guards are primary load-sharing members, not just protection."
+        }
+      ],
+      "decisions": [
+        "Structural-parts-only model: with bonded automatic contacts, keeping the electronics left about 1,596 unconstrained groups.",
+        "A 400 g load case — roughly twice hover thrust — as the sizing case for a ~200 g aircraft.",
+        "No safety factor reported: the model is isotropic and has no laminate strength data, so a number would be false precision.",
+        "Assign every flight-controller port up front: GPS on UART2, ELRS on UART3, VTX control on UART4, gimbal servo on PWM5."
+      ],
+      "results": [
+        {
+          "value": "1.955 MPa",
+          "label": "peak von Mises stress in the full assembly",
+          "source": "autonomous-drone structural-analysis/README.md"
+        },
+        {
+          "value": "1.183 mm",
+          "label": "maximum displacement",
+          "source": "autonomous-drone structural-analysis/README.md"
+        },
+        {
+          "value": "Spokes & junctions",
+          "label": "weakest zones: prop-guard spokes and duct-to-frame junctions",
+          "source": "autonomous-drone structural-analysis/README.md"
+        },
+        {
+          "value": "$412.83",
+          "label": "33-part bill of materials",
+          "source": "autonomous-drone docs/parts-list.md"
+        }
+      ],
+      "failures": [
+        {
+          "title": "What the model leaves out",
+          "text": "Linear static only, isotropic carbon fiber, and bonded contacts — impact loads and laminate behavior are not modeled yet."
+        }
+      ],
+      "next": [
+        "An impact load case for crashes and hard landings.",
+        "Print, assemble, and fly; then GPS follow and tracking."
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "src": "./media/autonomous-drone/cad-iso.jpg",
+          "alt": "Isometric CAD view of the ducted frame.",
+          "caption": "Isometric CAD view."
+        },
+        {
+          "type": "image",
+          "src": "./media/autonomous-drone/cad-bottom.jpg",
+          "alt": "Bottom CAD view of the ducted frame.",
+          "caption": "Bottom view."
+        }
+      ],
+      "links": [
+        {
+          "label": "Code & docs on GitHub",
+          "url": "https://github.com/Bhavya007-17/autonomous-drone",
+          "kind": "code"
+        }
+      ]
+    },
+    {
+      "id": "jarvis-agentic-orchestrator",
+      "name": "Jarvis · agent orchestrator",
+      "status": "Software prototype",
+      "role": "Sole developer of the integration layer",
+      "team": "Solo, built on OpenJarvis",
+      "timeline": "Jun 2026",
+      "domains": [
+        "Software"
+      ],
+      "summary": "A local-first assistant on OpenJarvis that routes each task to the right model, convenes a three-model council for hard plans, and calls tools over MCP.",
+      "chips": [
+        "4-rung model fallback",
+        "3-model planning council",
+        "174 web tests"
+      ],
+      "card": {
+        "type": "image",
+        "src": "./media/jarvis-agentic-orchestrator/council.png",
+        "alt": "Jarvis planning council view with three model proposals."
+      },
+      "hero": {
+        "type": "image",
+        "src": "./media/jarvis-agentic-orchestrator/agents.png",
+        "alt": "Jarvis agent-graph canvas with connected agent personas.",
+        "caption": "Agent graph: draw agent-to-agent edges and Jarvis runs them in topological order, at most three at a time."
+      },
+      "facts": [
+        {
+          "value": "4",
+          "label": "rungs in the model fallback ladder"
+        },
+        {
+          "value": "3",
+          "label": "models in the planning council"
+        },
+        {
+          "value": "174",
+          "label": "web tests, network and LLM calls mocked"
+        }
+      ],
+      "tldr": [
+        "What: an assistant that picks a model per task, escalates hard planning to a council, runs user-drawn agent graphs, and calls tools over MCP.",
+        "How: a thin FastAPI sidecar wires routing, council, graph, memory, voice, and vision into the OpenJarvis LiteLLM engine without modifying it.",
+        "Result: one LLM path with a NIM → NIM → Gemini → Ollama fallback ladder, covered by a 174-test web suite."
+      ],
+      "problem": "Assistants that hard-code one model are brittle: rate limits, outages, and mismatched model strengths all fail the same way. The aim was to integrate existing open-source pieces — wire, don't rewrite — into one assistant that degrades gracefully.",
+      "steps": [
+        {
+          "title": "One sidecar, one LLM path",
+          "text": "A FastAPI sidecar connects every feature to the OpenJarvis LiteLLM engine; no model ID is hard-coded."
+        },
+        {
+          "title": "Route and fall back",
+          "text": "Each task is classified and sent to the best-fit NVIDIA NIM model, falling back to a second NIM model, Gemini Flash, then local Ollama with exponential backoff."
+        },
+        {
+          "title": "Council for hard plans",
+          "text": "Three model families propose in parallel, a reasoning model critiques, and one plan is synthesized.",
+          "media": {
+            "type": "image",
+            "src": "./media/jarvis-agentic-orchestrator/council.png",
+            "alt": "Council view with three model proposals.",
+            "caption": "Planning council: three proposals, one critique, one plan."
+          }
+        },
+        {
+          "title": "Tools and memory",
+          "text": "MCP servers add a live code knowledge graph, web and GitHub access, and six action tools; durable memory carries facts across sessions.",
+          "media": {
+            "type": "image",
+            "src": "./media/jarvis-agentic-orchestrator/connections.png",
+            "alt": "Connections view showing the code graph and routing map.",
+            "caption": "Connections: code knowledge graph and routing map."
+          }
+        }
+      ],
+      "decisions": [
+        "Wire, don't rewrite: OpenJarvis stays vendored and unmodified; the work is integration.",
+        "Every LLM call goes through one engine with no hard-coded model IDs, so swapping models is configuration, not code.",
+        "Council and agent graph are capped at three concurrent calls to avoid rate-limit storms.",
+        "Face enrollment runs landmarks in the browser, and the enrolled vector is never returned to the client."
+      ],
+      "results": [
+        {
+          "value": "174",
+          "label": "web tests across sidecar, router, council, graph, memory, voice, vision, and tools",
+          "source": "jarvis-agentic-orchestrator README and tests/web"
+        },
+        {
+          "value": "34",
+          "label": "agent personas available to the graph",
+          "source": "jarvis-agentic-orchestrator README"
+        }
+      ],
+      "failures": [
+        {
+          "title": "No routing benchmark yet",
+          "text": "Latency and routing quality haven't been measured — the fallback ladder is tested for behavior, not for whether it picks the best model."
+        }
+      ],
+      "next": [
+        "Benchmark routing quality and latency against a fixed task set."
+      ],
+      "gallery": [
+        {
+          "type": "image",
+          "src": "./media/jarvis-agentic-orchestrator/chat.png",
+          "alt": "Jarvis chat view.",
+          "caption": "Chat."
+        }
+      ],
+      "links": [
+        {
+          "label": "Code on GitHub",
+          "url": "https://github.com/Bhavya007-17/jarvis-agentic-orchestrator",
+          "kind": "code"
+        },
+        {
+          "label": "Built on OpenJarvis (Apache-2.0)",
+          "url": "https://github.com/open-jarvis/OpenJarvis",
+          "kind": "credit"
         }
       ]
     }
