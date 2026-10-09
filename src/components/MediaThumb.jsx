@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import useInView, { useReducedMotion } from './useInView.js';
+import useInView, { useMotion } from './useInView.js';
 
 // Shown when a file is missing or cannot be decoded: the alt text stands in for the picture.
 function Fallback({ media }) {
@@ -21,7 +21,7 @@ function ImageThumb({ media }) {
 function VideoThumb({ media, autoPlay, controls }) {
   const wrap = useRef(null), video = useRef(null);
   const inView = useInView(wrap, { threshold: 0.5 });
-  const reduced = useReducedMotion();
+  const { paused: motionPaused } = useMotion();
   const [failed, setFailed] = useState(false);
   // A video that has not started loading (preload="none") reports nothing when its poster is missing, so probe the poster.
   const [posterBad, setPosterBad] = useState(false);
@@ -34,7 +34,7 @@ function VideoThumb({ media, autoPlay, controls }) {
   }, [media.poster]);
   // Whether the visitor paused it with the native controls (so scrolling back must not restart it), and whether this pause was ours.
   const userPaused = useRef(false), ourPause = useRef(false);
-  const shouldPlay = autoPlay && inView && !reduced && !failed;
+  const shouldPlay = autoPlay && inView && !motionPaused && !failed;
 
   useEffect(() => {
     const el = video.current;
@@ -65,7 +65,7 @@ function VideoThumb({ media, autoPlay, controls }) {
 }
 
 // One picture or clip from the data (`{type, src, poster?, alt}`).
-// autoPlay: muted, looping video that plays only while at least half of it is on screen (never under reduced motion).
+// autoPlay: muted, looping video that plays only while at least half of it is on screen (never while motion is paused: the site-wide toggle, or prefers-reduced-motion by default).
 // controls: native controls; without autoPlay it is a click-to-play video with a poster and nothing preloaded.
 export default function MediaThumb({ media, autoPlay = false, controls = false, ratio, fit = 'cover', className = '' }) {
   if (!media) return null;

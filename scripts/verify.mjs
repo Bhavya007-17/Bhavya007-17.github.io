@@ -15,7 +15,6 @@ const requiredText = ['name', 'status', 'role', 'team', 'timeline', 'summary', '
 const forbiddenKeys = ['source', 'sources', 'notes', 'kind', 'featured'];
 // `source` is a real field on results[] items and `kind` on links[] items; everywhere else they stay forbidden.
 const allowedKeyParent = { source: /^projects\[\d+\]\.results\[\d+\]$/, kind: /^projects\[\d+\]\.links\[\d+\]$/ };
-const forbiddenSchematicKeys = ['source', 'sources']; // schematics.json is being retired; only skip-if-absent legacy keys matter.
 const placeholderPattern = /\b(TODO|TBD|lorem|PLACEHOLDER|FIXME)\b/i;
 const forbiddenBundleText = ['Use only the supplied', 'Source: https://github.com', 'user confirmed', 'README conflicts', 'Do not add an unverified'];
 const limits = {
@@ -70,7 +69,7 @@ if (JSON.stringify(order) !== JSON.stringify(expectedOrder)) {
 }
 const ids = new Set(order);
 
-// 2. Forbidden keys at any depth in project data and (while it still exists) schematics.json.
+// 2. Forbidden keys at any depth in project data.
 function findKeys(value, path, forbidden, hits) {
   if (Array.isArray(value)) value.forEach((item, index) => findKeys(item, `${path}[${index}]`, forbidden, hits));
   else if (value && typeof value === 'object') {
@@ -83,8 +82,6 @@ function findKeys(value, path, forbidden, hits) {
 const keyHits = [];
 findKeys(data.profile, 'profile', forbiddenKeys, keyHits);
 findKeys(data.projects, 'projects', forbiddenKeys, keyHits);
-const schematics = readJson(join(root, 'src/data/schematics.json'), { optional: true });
-if (schematics) findKeys(schematics, 'schematics', forbiddenSchematicKeys, keyHits);
 if (keyHits.length) fail(`Forbidden keys found: ${keyHits.join(', ')}`);
 
 // 3. Required fields and counts for every project.

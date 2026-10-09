@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import content from './data/projects.json';
 import CaseStudy from './components/CaseStudy.jsx';
+import MotionToggle from './components/MotionToggle.jsx';
 import ProjectCard from './components/ProjectCard.jsx';
 import Showreel from './components/Showreel.jsx';
 import Skills from './components/Skills.jsx';
@@ -61,9 +62,10 @@ function useRoute() {
 }
 
 function Header() {
-  return <header className="site-header"><div className="shell header-inner"><a href="#/" className="brand" aria-label="Bhavya Dosi, home"><span className="brand-icon" aria-hidden="true">B.</span><span>Bhavya Dosi</span></a><nav aria-label="Main navigation"><a href="#/projects">Projects</a><a href="#/about">About</a><a href="#/contact">Contact</a><a className="nav-resume" href={profile.resume} target="_blank" rel="noreferrer">Resume <Arrow /></a></nav></div></header>;
+  return <header className="site-header"><div className="shell header-inner"><a href="#/" className="brand" aria-label="Bhavya Dosi, home"><span className="brand-icon" aria-hidden="true">B.</span><span>Bhavya Dosi</span></a><nav aria-label="Main navigation"><a href="#/projects">Projects</a><a href="#/about">About</a><a href="#/contact">Contact</a><MotionToggle /><a className="nav-resume" href={profile.resume} target="_blank" rel="noreferrer">Resume <Arrow /></a></nav></div></header>;
 }
 
+// DOM order is copy, actions, reel so keyboard users reach Resume before the reel controls; CSS grid areas place the reel beside/under the copy.
 function Hero() {
   const firstName = profile.name.split(' ')[0];
   return <section className="hero shell" aria-labelledby="hero-title">
@@ -72,7 +74,6 @@ function Hero() {
       <h1 id="hero-title">Hi, I’m {firstName}.</h1>
       <p className="hero-focus">{profile.tagline}</p>
     </div>
-    <Showreel clips={profile.reel} projects={projects} />
     <div className="hero-cta">
       <p className="hero-availability">{profile.availability}</p>
       <div className="hero-actions">
@@ -82,6 +83,7 @@ function Hero() {
         <a className="quiet-link" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
       </div>
     </div>
+    <Showreel clips={profile.reel} projects={projects} />
   </section>;
 }
 
