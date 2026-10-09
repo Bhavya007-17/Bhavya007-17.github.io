@@ -251,8 +251,8 @@
         }
       ],
       "tldr": [
-        "What: onboard an unfamiliar robot straight from its ROS 2 workspace, then coordinate a mixed fleet from one natural-language mission.",
-        "How: a Composer turns URDF, launch files, and interfaces into a capability descriptor with file-and-line provenance; an Executive plans, validates in simulation, waits for human approval, and dispatches to capability-matched agents.",
+        "What: Onboard an unfamiliar robot straight from its ROS 2 workspace, then coordinate a mixed fleet from one natural-language mission.",
+        "How: A Composer turns URDF, launch files, and interfaces into a capability descriptor with file-and-line provenance; an Executive plans, validates in simulation, waits for human approval, and dispatches to capability-matched agents.",
         "Result: 5 of 5 red-box retrieval missions passed in Gazebo with a quadrotor, a ground robot, and an arm — and the system refuses missions no robot in the fleet can perform."
       ],
       "problem": "Every robot in a mixed fleet speaks its own ROS 2 dialect, so adding one usually means weeks of bespoke integration code. HIVE's goal is to replace that with workspace analysis: read the robot's code, derive what it can safely do, and let a single planner coordinate ground, aerial, and manipulator robots from a plain-English mission.",
@@ -439,9 +439,9 @@
         }
       ],
       "tldr": [
-        "What: a manipulation agent that turns plain-English speech or text into pick-and-place on a simulated Franka Panda.",
-        "How: push-to-talk audio is transcribed locally with faster-whisper, a local parser or NVIDIA NIM tool calling maps it to look/find/pick/place skills, and mink differential IK moves the arm.",
-        "Result: spoken and typed commands drive pick-and-place of four colored cubes, with garbage audio rejected before it can reach the robot."
+        "What: A manipulation agent that turns plain-English speech or text into pick-and-place on a simulated Franka Panda.",
+        "How: Push-to-talk audio is transcribed locally with faster-whisper, a local parser or NVIDIA NIM tool calling maps it to look/find/pick/place skills, and mink differential IK moves the arm.",
+        "Result: Spoken and typed commands drive pick-and-place of four colored cubes, with garbage audio rejected before it can reach the robot."
       ],
       "problem": "Language interfaces for robots fail in two dull ways: they hallucinate commands from silence, and they hide the cases where the robot can't do what was asked. The goal was a speech-to-motion loop that runs locally, rejects audio it isn't sure about, and reports failures instead of retrying silently.",
       "steps": [
@@ -596,9 +596,9 @@
         }
       ],
       "tldr": [
-        "What: a CroLabs robot that uses one structure for flight, driving, and swimming.",
-        "How: four ring ducts with brushless motors and propellers mount on servo-driven tilt joints around a central electronics bay, tied together by a laser-cut frame.",
-        "Result: the tilt mechanism is built and running on the bench, and a six-material trade study sets the frame material path from prototype to flight frame."
+        "What: A CroLabs robot that uses one structure for flight, driving, and swimming.",
+        "How: Four ring ducts with brushless motors and propellers mount on servo-driven tilt joints around a central electronics bay, tied together by a laser-cut frame.",
+        "Result: The tilt mechanism is built and running on the bench, and a six-material trade study sets the frame material path from prototype to flight frame."
       ],
       "problem": "A robot that crosses air, ground, and water usually carries three propulsion systems, and the extra mass kills flight time. Tilting ring ducts let the same motors and structure serve every mode — which puts the whole burden on a frame that must be light, stiff, waterproof, and survive impacts.",
       "steps": [
@@ -724,9 +724,9 @@
         }
       ],
       "tldr": [
-        "What: a micromouse stack where the robot starts with no map and has to discover the maze it is solving.",
-        "How: a ray-marched LaserScan feeds a tri-state belief map; flood-fill re-plans after every cell while a ROS 2 controller drives /cmd_vel and closes the loop on /odom in Gazebo Harmonic.",
-        "Result: on a seeded 10×10 maze it searches, returns, and speed-runs in 50 moves each — the true shortest path."
+        "What: A micromouse stack where the robot starts with no map and has to discover the maze it is solving.",
+        "How: A ray-marched LaserScan feeds a tri-state belief map; flood-fill re-plans after every cell while a ROS 2 controller drives /cmd_vel and closes the loop on /odom in Gazebo Harmonic.",
+        "Result: On a seeded 10×10 maze it searches, returns, and speed-runs in 50 moves each — the true shortest path."
       ],
       "problem": "The first version solved the maze from a god's-eye view: the planner read the walls from a file and the robot just replayed the answer. It discovered nothing. The rebuild takes the map away — the robot has to sense, believe, and re-plan like a real micromouse.",
       "steps": [
@@ -863,8 +863,8 @@
         }
       ],
       "tldr": [
-        "What: the toolchain for an imitation-learning study on the SO-101 arm, built so later failures can be blamed on data, not setup.",
-        "How: a locked LeRobot 0.5.0 environment on WSL2 and a Blackwell GPU, a measured batch-size probe, bf16 training, a fresh-process reload check, and a MuJoCo scripted expert that writes LeRobot v3 datasets.",
+        "What: The toolchain for an imitation-learning study on the SO-101 arm, built so later failures can be blamed on data, not setup.",
+        "How: A locked LeRobot 0.5.0 environment on WSL2 and a Blackwell GPU, a measured batch-size probe, bf16 training, a fresh-process reload check, and a MuJoCo scripted expert that writes LeRobot v3 datasets.",
         "Result: 10,000 of 10,000 steps with 0 mismatched tensors on reload, plus 160 checker-passed demonstrations with every failed attempt logged."
       ],
       "problem": "Imitation-learning comparisons fall apart when the environment is the variable nobody controls. Before comparing an LLM agent, ACT, and SmolVLA on the same tasks, the setup itself had to be proven — and the comparison protocol frozen before any result existed.",
@@ -994,8 +994,8 @@
         }
       ],
       "tldr": [
-        "What: a ~140 mm cinewhoop-style camera drone designed around a SpeedyBee F7 Mini, GPS follow, ELRS control, and a single-axis tilt gimbal.",
-        "How: full packaging in Fusion 360, then a static FEA of the carbon-fiber frame under a 400 g thrust case, comparing frame-only and full-assembly models.",
+        "What: A ~140 mm cinewhoop-style camera drone designed around a SpeedyBee F7 Mini, GPS follow, ELRS control, and a single-axis tilt gimbal.",
+        "How: Full packaging in Fusion 360, then a static FEA of the carbon-fiber frame under a 400 g thrust case, comparing frame-only and full-assembly models.",
         "Result: 1.96 MPa peak stress and 1.18 mm max displacement, with the ducts and prop guards shown to carry load alongside the frame."
       ],
       "problem": "A palm-sized drone that follows and films someone has to fit a GPS, gimbal, FPV stack, and battery inside roughly 140 mm. The analysis goal was to find where the frame is actually stressed so it can be reinforced or lightened deliberately rather than by guesswork.",
@@ -1131,9 +1131,9 @@
         }
       ],
       "tldr": [
-        "What: an assistant that picks a model per task, escalates hard planning to a council, runs user-drawn agent graphs, and calls tools over MCP.",
-        "How: a thin FastAPI sidecar wires routing, council, graph, memory, voice, and vision into the OpenJarvis LiteLLM engine without modifying it.",
-        "Result: one LLM path with a NIM → NIM → Gemini → Ollama fallback ladder, covered by a 174-test web suite."
+        "What: An assistant that picks a model per task, escalates hard planning to a council, runs user-drawn agent graphs, and calls tools over MCP.",
+        "How: A thin FastAPI sidecar wires routing, council, graph, memory, voice, and vision into the OpenJarvis LiteLLM engine without modifying it.",
+        "Result: One LLM path with a NIM → NIM → Gemini → Ollama fallback ladder, covered by a 174-test web suite."
       ],
       "problem": "Assistants that hard-code one model are brittle: rate limits, outages, and mismatched model strengths all fail the same way. The aim was to integrate existing open-source pieces — wire, don't rewrite — into one assistant that degrades gracefully.",
       "steps": [
