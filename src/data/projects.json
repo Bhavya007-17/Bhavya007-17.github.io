@@ -380,7 +380,8 @@
           "src": "./media/hive/concept.mp4",
           "poster": "./media/hive/concept.jpg",
           "alt": "Animated HIVE concept film.",
-          "caption": "Concept film — the full vision for HIVE, animated."
+          "caption": "Concept film — the full vision for HIVE, animated.",
+          "captions": "./media/hive/concept.vtt"
         }
       ],
       "links": [

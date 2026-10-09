@@ -59,7 +59,7 @@ function VideoThumb({ media, autoPlay, controls }) {
       : <video ref={video} className={posterBad ? 'no-poster' : undefined} src={media.src} poster={media.poster} muted={autoPlay} loop={autoPlay} playsInline preload="none" controls={controls}
           aria-label={controls ? media.alt : undefined} aria-hidden={controls ? undefined : true}
           onPause={onPause} onPlay={onPlay} onError={() => setFailed(true)}>
-          {media.captions && <track kind="captions" src={media.captions} srcLang="en" label="English" default />}
+          {media.captions && <track kind="captions" src={media.captions} srcLang="en" label="English" />}
         </video>}
   </div>;
 }

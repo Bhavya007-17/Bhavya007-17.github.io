@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import content from './data/projects.json';
+import ArmFallback, { ArmBoundary } from './components/ArmFallback.jsx';
 import CaseStudy from './components/CaseStudy.jsx';
 import MotionToggle from './components/MotionToggle.jsx';
 import ProjectCard from './components/ProjectCard.jsx';
@@ -8,7 +9,8 @@ import Skills from './components/Skills.jsx';
 import TradeStudy from './components/TradeStudy.jsx';
 
 // Three.js lives in its own chunk, loaded only when the home page renders.
-const ArmHero = lazy(() => import('./components/ArmHero.jsx'));
+// If the chunk cannot be fetched, the static drawing stands in (and ArmBoundary covers a render error), so the page never blanks.
+const ArmHero = lazy(() => import('./components/ArmHero.jsx').catch(() => ({ default: ArmFallback })));
 const { profile, projects } = content;
 const SITE_TITLE = 'Bhavya Dosi — Mechanical Engineering & Robotics';
 const Arrow = () => <span aria-hidden="true">↗</span>;
@@ -85,7 +87,7 @@ function Hero() {
         <a className="quiet-link" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
       </div>
     </div>
-    <div className="hero-visual"><Suspense fallback={<div className="arm-loading" aria-label="Loading arm animation" />}><ArmHero /></Suspense></div>
+    <div className="hero-visual"><ArmBoundary><Suspense fallback={<div className="arm-loading" aria-hidden="true" />}><ArmHero /></Suspense></ArmBoundary></div>
   </section>;
 }
 

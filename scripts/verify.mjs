@@ -11,6 +11,7 @@ const dist = resolve(process.env.VERIFY_DIST || join(root, 'dist'));
 const skipDist = process.env.VERIFY_SKIP_DIST === '1';
 const expectedOrder = ['hive', 'robotic-arm', 'amphibious-robot', 'ros2-micromouse-sync', 'act-training', 'autonomous-drone', 'jarvis-agentic-orchestrator'];
 const allowedDomains = ['Mechanical', 'Software', 'Learning'];
+const allowedMediaTypes = ['image', 'video'];
 const requiredText = ['name', 'status', 'role', 'team', 'timeline', 'summary', 'problem'];
 const forbiddenKeys = ['source', 'sources', 'notes', 'kind', 'featured'];
 // `source` is a real field on results[] items and `kind` on links[] items; everywhere else they stay forbidden.
@@ -104,6 +105,18 @@ projects.forEach((project, index) => {
   });
   if (!isText(project.card?.src)) fail(`${at}: "card.src" is missing or empty.`);
   if (!isText(project.hero?.src)) fail(`${at}: "hero.src" is missing or empty.`);
+  // Every media object (card, hero, steps, failures, gallery): a valid type, non-empty alt text, and a poster on every video.
+  const mediaAt = (media, path) => {
+    if (!media || typeof media !== 'object') return fail(`${at}: ${path} is not a media object.`);
+    if (!allowedMediaTypes.includes(media.type)) fail(`${at}: ${path} has type "${media.type ?? ''}"; expected one of [${allowedMediaTypes.join(', ')}].`);
+    if (!isText(media.alt)) fail(`${at}: ${path} has no "alt" text.`);
+    if (media.type === 'video' && !isText(media.poster)) fail(`${at}: ${path} is a video with no "poster".`);
+  };
+  mediaAt(project.card, 'card');
+  mediaAt(project.hero, 'hero');
+  asArray(project.steps).forEach((step, stepIndex) => { if (step?.media) mediaAt(step.media, `steps[${stepIndex}].media`); });
+  asArray(project.failures).forEach((failure, failureIndex) => { if (failure?.media) mediaAt(failure.media, `failures[${failureIndex}].media`); });
+  asArray(project.gallery).forEach((item, itemIndex) => mediaAt(item, `gallery[${itemIndex}]`));
   if (asArray(project.links).length + asArray(project.documents).length < 1) fail(`${at}: needs at least one entry in "links" or "documents".`);
 });
 
@@ -115,6 +128,9 @@ else {
   if (reel.length !== 5) fail(`profile.reel must have exactly 5 entries; has ${reel.length}.`);
   reel.forEach((item, index) => {
     if (!ids.has(item?.project)) fail(`profile.reel[${index}].project "${item?.project}" is not a project id.`);
+    if (!isText(item?.src)) fail(`profile.reel[${index}] has no "src".`);
+    if (!isText(item?.poster)) fail(`profile.reel[${index}] is a video with no "poster".`);
+    if (!isText(item?.caption)) fail(`profile.reel[${index}] has no "caption" (the reel's alt text).`);
   });
   asArray(profile.skills).forEach((group, groupIndex) => asArray(group?.items).forEach((item, itemIndex) => {
     asArray(item?.projects).forEach(id => {
@@ -132,6 +148,11 @@ for (const [path, text] of strings(data, '')) {
 // 6. Media: every "./media/..." string in projects.json and tradeStudies.json must exist, and every file must be used.
 const references = new Map(); // './media/x' -> [json paths that use it]
 const studies = readJson(join(root, 'src/data/tradeStudies.json'), { optional: true });
+// Document buttons of the form #/study/<id> must point at a study that exists.
+projects.forEach((project, index) => asArray(project?.documents).forEach((doc, docIndex) => {
+  const match = /^#\/study\/(.+)$/.exec(doc?.href ?? '');
+  if (match && !(studies && Object.hasOwn(studies, match[1]))) fail(`projects[${index}] (${project.id}): documents[${docIndex}] links to "${doc.href}" but tradeStudies.json has no study "${match[1]}".`);
+}));
 for (const [file, tree] of [['projects.json', data], ['tradeStudies.json', studies]]) {
   for (const [path, text] of strings(tree, '')) {
     if (text.startsWith('./media/')) references.set(text, [...(references.get(text) || []), `${file} ${path}`]);

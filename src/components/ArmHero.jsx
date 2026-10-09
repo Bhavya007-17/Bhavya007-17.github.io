@@ -2,15 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { ARM_GEOMETRY, ARM_STATIONS, sampleArmMotion } from './armMotion';
 import { useMotion } from './useInView.js';
+import { ArmDrawing } from './ArmFallback.jsx';
 
 export default function ArmHero() {
   const container = useRef(null), control = useRef(null);
   const { paused } = useMotion();
   const playing = !paused, playingNow = useRef(playing);
-  playingNow.current = playing;
   const [fallback, setFallback] = useState(false);
   // The arm obeys the site-wide motion toggle: paused freezes it on the current frame (the render loop stops), playing resumes it.
-  useEffect(() => { control.current?.(playing); }, [playing]);
+  useEffect(() => { playingNow.current = playing; control.current?.(playing); }, [playing]);
   useEffect(() => {
     const host = container.current;
     let renderer;
@@ -111,15 +111,15 @@ export default function ArmHero() {
       camera.position.copy(cameraTarget).add(new THREE.Vector3(5.5, 1.7, 1.5).multiplyScalar(.72 * fit));
       camera.lookAt(cameraTarget); camera.updateProjectionMatrix(); renderer.render(scene, camera);
     }); resize.observe(host);
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }); observer.observe(host);
+    const observer = new IntersectionObserver(entries => { visible = entries[entries.length - 1].isIntersecting; sync(); }); observer.observe(host);
     document.addEventListener('visibilitychange', sync); pose(0); sync();
     return () => {
       disposed = true; cancelAnimationFrame(frame); control.current = null;
       resize.disconnect(); observer.disconnect(); document.removeEventListener('visibilitychange', sync);
       const geometries = new Set(), materials = new Set();
       scene.traverse(object => { if (object.geometry) geometries.add(object.geometry); if (object.material) materials.add(object.material); });
-      geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose()); renderer.dispose(); renderer.domElement.remove();
+      geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose()); renderer.forceContextLoss(); renderer.dispose(); renderer.domElement.remove();
     };
   }, []);
-  return <div className="arm-hero" role="group" aria-label="Decorative robot arm picking up and placing a cube"><div className="arm-canvas" ref={container}>{fallback && <svg className="arm-fallback" viewBox="0 0 400 350" role="img" aria-label="Robot arm line drawing"><g fill="none" stroke="currentColor" strokeWidth="7" strokeLinejoin="round"><path d="M98 308h97l-9-28h-80zM145 280v-45l-32-105 28-9 62 94 75-80 20 24-78 109-45 12"/><circle cx="127" cy="128" r="22"/><circle cx="190" cy="230" r="20"/><path d="m291 147 20 24m-4-30 26 26-15 15m-19-34-14 14 25 25"/></g></svg>}</div><div className="arm-caption"><span>Pick. Place. Repeat.</span></div></div>;
+  return <div className="arm-hero" role="group" aria-label="Decorative robot arm picking up and placing a cube"><div className="arm-canvas" ref={container}>{fallback && <ArmDrawing />}</div><div className="arm-caption"><span>Pick. Place. Repeat.</span></div></div>;
 }
