@@ -1,6 +1,6 @@
 # Bhavya Dosi — portfolio
 
-Personal robotics portfolio: a warm dark React site that leads with real project footage. The home page opens with a decorative 3D robot arm, then an "In motion" strip of muted project clips, then seven project cards; each project opens as a case study (problem, how it works, design decisions, sourced results, what didn't work, what's next, gallery). One project also links to a frame-material trade study. Built with Vite for GitHub Pages; no backend or API keys.
+Personal robotics portfolio: a warm dark React site that leads with real project footage. The home page opens with a decorative 3D robot arm, then a slim "In motion" filmstrip of five small project tiles, then seven project cards; each project opens as a case study (problem, how it works, design decisions, sourced results, what didn't work, what's next, gallery). One project also links to a frame-material trade study. Built with Vite for GitHub Pages; no backend or API keys.
 
 ## Run locally
 
@@ -27,7 +27,7 @@ Relative asset paths and hash routes work on both user and project Pages sites w
 All text lives in data files; the components only render it.
 
 - `src/data/projects.json` has two parts.
-  - `profile`: name, headline, tagline, availability, summary, links, education, experience, `skills` (groups of `{name, projects: [project ids]}`; each skill links to the first project listed) and `reel` (exactly 5 clips `{project, src, poster, caption}` for the home showreel).
+  - `profile`: name, headline, availability, summary, links, education, experience, `skills` (groups of `{name, projects: [project ids]}`; each skill links to the first project listed) and `reel` (exactly 5 tiles `{project, type, src, poster?, caption}` for the home filmstrip; `type` is `video` or `image`, and videos need a `poster`).
   - `projects`: seven case studies, in this order: `hive`, `robotic-arm`, `amphibious-robot`, `ros2-micromouse-sync`, `act-training`, `autonomous-drone`, `jarvis-agentic-orchestrator`. Each has `id, name, status, role, team, timeline, domains[], summary, chips[]` (2–3 result chips for the card), `card` and `hero` media, `facts[]` (key numbers), `tldr[3]` (What / How / Result), `problem`, `steps[]` (title, text, optional media), `decisions[]`, `results[]` (`value, label, source`: every number names its source), `failures[]` (title, text, optional media), `next[]`, `gallery[]`, `links[]` (`label, url, kind`) and optional `documents[]` (`label`, `href` such as `#/study/amphibious-frame`). `failures`, `gallery` and `links` may be empty; a project needs at least one link or document.
   - A media object is `{type: "video" | "image", src, poster?, alt, caption?, captions?}`. Videos need a `poster`; every media object needs `alt` text. A video may carry `captions`, the path of a `.vtt` file (for example `./media/hive/concept.vtt`, the narration of the HIVE concept film); it is rendered as a captions track that is off by default, so viewers turn it on with the player's CC control and it never doubles with on-screen text. Paths look like `./media/<project-id>/<file>`.
 - `src/data/tradeStudies.json`: trade-study data; totals are computed on the page from scores × weights.
@@ -40,9 +40,9 @@ Captions and labels must say what the footage is: simulation is called simulatio
 
 ## Components
 
-- `App.jsx`: hash routing (with scroll restoration for Back), header, hero, home sections. The hero shows the tagline and actions beside the arm; the "In motion" section sits directly under it.
+- `App.jsx`: hash routing (with scroll restoration for Back), header, hero, home sections. The hero shows the greeting, availability and actions beside the arm; the "In motion" filmstrip sits directly under it.
 - `ArmHero.jsx` and `armMotion.js`: the hero arm, a decorative procedural Three.js model (not a real robot, no data behind it) that picks and places a cube in a loop. It is lazy-loaded, so Three.js is a separate chunk that only the home page requests. It obeys the motion toggle (frozen on its current frame while paused), stops rendering while off screen, and falls back to a vector drawing when WebGL is unavailable.
-- `Showreel.jsx`: the "In motion" strip, full width at 16:9. It plays the five `profile.reel` clips one at a time, muted. Only the current clip is loaded. It advances when a clip ends, has a caption chip and dot buttons, links to the project, and pauses when scrolled out of view. When the system asks for reduced motion it is a grid of posters instead, until the visitor presses **Play motion**, which swaps in the player.
+- `Filmstrip.jsx`: the "In motion" strip, a single row of five small 16:9 tiles (a swipeable row on phones), each linking to its project and named by its caption. Video tiles are muted loops that load and play only while on screen and never while motion is paused; image tiles are stills.
 - `ProjectCard.jsx`: one card per project (HIVE spans two columns on wide screens).
 - `MediaThumb.jsx`: renders a media object. Videos use `preload="none"` and a poster; looping card/step videos are muted and play only while at least half visible. A missing file falls back to its poster, then to the alt text. A `captions` file becomes a `<track kind="captions">` without `default`.
 - `CaseStudy.jsx`: the case-study page template.
@@ -55,7 +55,7 @@ Captions and labels must say what the footage is: simulation is called simulatio
 
 Warm charcoal surfaces, cream text, copper links, and red reserved for status and one highlighted chip per card. Fonts are DM Sans and Instrument Serif. Text is at least 12 px and nothing overflows horizontally at 390, 768 or 1440 px.
 
-Motion: nothing autoplays with sound, and nothing loads video it does not need. The hero arm and the showreel are in the first screens, so the arm's Three.js chunk is the one sizeable download on the home page. Hero videos on case studies show a poster with controls and never autoplay. The header has one **Pause motion / Play motion** toggle that stops the hero arm (it freezes on its current frame), the showreel and every card and step loop, and keeps new ones from starting; the choice is remembered in `localStorage` (the site still works if storage is unavailable). With no saved choice, motion is paused when the system asks for reduced motion.
+Motion: nothing autoplays with sound, and nothing loads video it does not need. The hero arm and the filmstrip are in the first screens, so the arm's Three.js chunk is the one sizeable download on the home page. Hero videos on case studies show a poster with controls and never autoplay. The header has one **Pause motion / Play motion** toggle that stops the hero arm (it freezes on its current frame), the filmstrip and every card and step loop, and keeps new ones from starting; the choice is remembered in `localStorage` (the site still works if storage is unavailable). With no saved choice, motion is paused when the system asks for reduced motion.
 
 ## `npm run verify`
 
@@ -65,6 +65,6 @@ Run after `npm run build` (set `VERIFY_DIST=<dir>` for another build folder, `VE
 - a reel that is not exactly 5 clips, or reel/skill entries pointing at unknown projects;
 - forbidden keys (`source`, `sources`, `notes`, `kind`, `featured` outside the places that use them) and placeholder text (TODO, TBD, lorem, FIXME);
 - any `./media/...` path that does not exist, any file in `public/media` that nothing references, any video without a `.jpg` poster, and any file over its size budget;
-- a media object (card, hero, step, failure, gallery) without a valid `type` (`image` or `video`), without `alt` text, or a video without a `poster`; a reel clip without `src`, `poster` or `caption`;
+- a media object (card, hero, step, failure, gallery) without a valid `type` (`image` or `video`), without `alt` text, or a video without a `poster`; a filmstrip tile without a valid `type`, `src` or `caption`, or a video tile without a `poster`;
 - a document button `#/study/<id>` whose study is not in `tradeStudies.json`;
 - the built JavaScript containing phrases that must not ship.

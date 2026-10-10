@@ -2,9 +2,9 @@ import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import content from './data/projects.json';
 import ArmFallback, { ArmBoundary } from './components/ArmFallback.jsx';
 import CaseStudy from './components/CaseStudy.jsx';
+import Filmstrip from './components/Filmstrip.jsx';
 import MotionToggle from './components/MotionToggle.jsx';
 import ProjectCard from './components/ProjectCard.jsx';
-import Showreel from './components/Showreel.jsx';
 import Skills from './components/Skills.jsx';
 import TradeStudy from './components/TradeStudy.jsx';
 
@@ -76,7 +76,6 @@ function Hero() {
     <div className="hero-copy">
       <span className="intro-label">{profile.headline}</span>
       <h1 id="hero-title">Hi, I’m {firstName}.</h1>
-      <p className="hero-focus">{profile.tagline}</p>
     </div>
     <div className="hero-cta">
       <p className="hero-availability">{profile.availability}</p>
@@ -91,10 +90,11 @@ function Hero() {
   </section>;
 }
 
+// A quiet strip of small clips, not a feature: the project cards below carry the detail.
 function InMotion() {
-  return <section id="in-motion" className="reel-section shell" aria-labelledby="in-motion-title">
-    <div className="section-title"><div><h2 id="in-motion-title">In motion</h2><p>Real footage from the projects — simulation runs and a bench prototype.</p></div></div>
-    <Showreel clips={profile.reel} projects={projects} />
+  return <section id="in-motion" className="strip-section shell" aria-labelledby="in-motion-title">
+    <h2 id="in-motion-title" className="strip-title">In motion</h2>
+    <Filmstrip clips={profile.reel} />
   </section>;
 }
 
