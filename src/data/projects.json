@@ -163,6 +163,12 @@
             "projects": [
               "jarvis-agentic-orchestrator"
             ]
+          },
+          {
+            "name": "Claude Code routines",
+            "projects": [
+              "jarvis-agentic-orchestrator"
+            ]
           }
         ]
       }
@@ -1102,64 +1108,70 @@
     },
     {
       "id": "jarvis-agentic-orchestrator",
-      "name": "Jarvis · agent orchestrator",
+      "name": "Jarvis + Roadmap OS",
       "status": "Software prototype",
-      "role": "Sole developer of the integration layer",
-      "team": "Solo, built on OpenJarvis",
-      "timeline": "Jun 2026",
+      "role": "Sole developer: all of Roadmap OS, and Jarvis's integration layer",
+      "team": "Solo; Jarvis is built on OpenJarvis",
+      "timeline": "Jun – Aug 2026",
       "domains": [
         "Software"
       ],
-      "summary": "A local-first assistant on OpenJarvis that routes each task to the right model, convenes a three-model council for hard plans, and calls tools over MCP.",
+      "summary": "A personal AI productivity stack in two halves: Roadmap OS, a planner that an AI routine re-drafts every week from my progress and emerging tech, and Jarvis, a local-first orchestrator that routes each task to the right model, convenes a three-model council, and calls tools over MCP.",
       "chips": [
-        "4-rung model fallback",
+        "Weekly AI-drafted plan",
         "3-model planning council",
         "174 web tests"
       ],
       "card": {
         "type": "image",
-        "src": "./media/jarvis-agentic-orchestrator/council.png",
-        "alt": "Jarvis planning council view with three model proposals."
+        "src": "./media/jarvis-agentic-orchestrator/roadmap-home.png",
+        "alt": "Roadmap OS dashboard: a one-day streak, 43% of this week's tasks done, the week's task list, an empty tech radar, and upcoming deadlines."
       },
       "hero": {
         "type": "image",
-        "src": "./media/jarvis-agentic-orchestrator/agents.png",
-        "alt": "Jarvis agent-graph canvas with connected agent personas.",
-        "caption": "Agent graph: draw agent-to-agent edges and Jarvis runs them in topological order, at most three at a time."
+        "src": "./media/jarvis-agentic-orchestrator/roadmap-home.png",
+        "alt": "Roadmap OS dashboard: a one-day streak, 43% of this week's tasks done, the week's task list, an empty tech radar, and upcoming deadlines.",
+        "caption": "Roadmap OS: one dashboard over one task pool — streak, weekly progress, this week’s tasks, the tech radar, and deadlines. Two deadline rows are blurred for privacy."
       },
       "facts": [
         {
-          "value": "4",
-          "label": "rungs in the model fallback ladder"
+          "value": "1 PR",
+          "label": "a week: the routine’s re-drafted plan, waiting for my review"
+        },
+        {
+          "value": "3–5",
+          "label": "emerging-tech signals added to the radar each week"
         },
         {
           "value": "3",
-          "label": "models in the planning council"
+          "label": "models in Jarvis’s planning council"
         },
         {
           "value": "174",
-          "label": "web tests, network and LLM calls mocked"
+          "label": "Jarvis web tests, network and LLM calls mocked"
         }
       ],
       "tldr": [
-        "What: An assistant that picks a model per task, escalates hard planning to a council, runs user-drawn agent graphs, and calls tools over MCP.",
-        "How: A thin FastAPI sidecar wires routing, council, graph, memory, voice, and vision into the OpenJarvis LiteLLM engine without modifying it.",
-        "Result: One LLM path with a NIM → NIM → Gemini → Ollama fallback ladder, covered by a 174-test web suite."
+        "What: A planner and an orchestrator for one long-term roadmap. Roadmap OS keeps a multi-year plan current on its own; Jarvis is the agent stack meant to carry out its tasks.",
+        "How: Every Sunday a scheduled Claude Code routine reconciles what got done, researches 3–5 emerging-tech signals, drafts next week’s tasks, and opens one pull request that I review and merge. Jarvis routes each task to the best-fit model, escalates hard plans to a three-model council, and calls tools over MCP.",
+        "Result: A roadmap that re-plans itself weekly behind a human review gate, and an orchestrator with a NIM → NIM → Gemini → Ollama fallback ladder covered by a 174-test suite."
       ],
-      "problem": "Assistants that hard-code one model are brittle: rate limits, outages, and mismatched model strengths all fail the same way. The aim was to integrate existing open-source pieces — wire, don't rewrite — into one assistant that degrades gracefully.",
+      "problem": "Static roadmaps go stale within weeks: priorities shift, new tools ship, and re-planning by hand turns into a second job. The aim was to let AI do the re-planning and the busywork, while every change to the plan still passes a human review — and to build the agent stack that can eventually take tasks off the list.",
       "steps": [
         {
-          "title": "One sidecar, one LLM path",
-          "text": "A FastAPI sidecar connects every feature to the OpenJarvis LiteLLM engine; no model ID is hard-coded.",
-          "media": {
-            "type": "image",
-            "src": "./media/jarvis-agentic-orchestrator/shell.png",
-            "alt": "Jarvis shell: an arc-reactor HUD with a dock of module buttons.",
-            "caption": "The shell: floating module windows over an arc-reactor HUD."
-          }
+          "title": "Roadmap OS: one plan, one task pool",
+          "text": "Every checkable item — weekly task, monthly goal, learning unit, portfolio evidence — lives once, keyed by ID, in a single state file. The dashboard’s week, project, course, and plan views are projections of that one pool, never separate lists."
         },
         {
-          "title": "Route and fall back",
+          "title": "Roadmap OS: a routine re-plans every week",
+          "text": "A scheduled Claude Code routine runs unattended on a fresh clone: it reconciles the closing week, scans the tech radar for 3–5 signals (robot-learning releases, embodied-AI papers, target companies), drafts next week by a fixed triage order, merges notes from an inbox, and must pass a validator before it opens one pull request."
+        },
+        {
+          "title": "Roadmap OS: a person closes the loop",
+          "text": "A /weekly-review command walks me through the proposal, applies what I accept, logs it to an append-only changelog, and merges. The routine proposes; it can never push to main or reshape the plan."
+        },
+        {
+          "title": "Jarvis: route and fall back",
           "text": "Each task is classified and sent to the best-fit NVIDIA NIM model, falling back to a second NIM model, Gemini Flash, then local Ollama with exponential backoff.",
           "media": {
             "type": "image",
@@ -1169,7 +1181,7 @@
           }
         },
         {
-          "title": "Council for hard plans",
+          "title": "Jarvis: a council for hard plans",
           "text": "Three model families propose in parallel, a reasoning model critiques, and one plan is synthesized.",
           "media": {
             "type": "image",
@@ -1179,7 +1191,7 @@
           }
         },
         {
-          "title": "Draw a graph of agents",
+          "title": "Jarvis: a graph of agents",
           "text": "Drag personas onto a board and wire them to the orchestrator; Jarvis checks the graph for cycles, runs it in topological order with at most three calls in flight, and synthesizes one plan.",
           "media": {
             "type": "image",
@@ -1189,7 +1201,7 @@
           }
         },
         {
-          "title": "Tools and memory",
+          "title": "Jarvis: tools and memory",
           "text": "MCP servers add a live code knowledge graph, web and GitHub access, and six action tools; durable memory carries facts across sessions.",
           "media": {
             "type": "image",
@@ -1200,38 +1212,63 @@
         }
       ],
       "decisions": [
-        "Wire, don't rewrite: OpenJarvis stays vendored and unmodified; the work is integration.",
-        "Every LLM call goes through one engine with no hard-coded model IDs, so swapping models is configuration, not code.",
-        "Council and agent graph are capped at three concurrent calls to avoid rate-limit storms.",
-        "Face enrollment runs landmarks in the browser, and the enrolled vector is never returned to the client."
+        "The routine proposes, a person disposes: it only ever opens a pull request on a claude/ branch, never pushes to main, and never touches the changelog.",
+        "Structural changes — projects, publication targets, recruiting lanes — can come only from a monthly review, never from one week’s tech signal.",
+        "The dashboard is a public shell with no personal data in it: it reads the private repo at runtime through a token kept only in the browser.",
+        "Wire, don’t rewrite: OpenJarvis stays vendored and unmodified; Jarvis’s work is integration.",
+        "Every Jarvis LLM call goes through one engine with no hard-coded model IDs, so swapping models is configuration, not code.",
+        "Council and agent graph are capped at three concurrent calls to avoid rate-limit storms."
       ],
       "results": [
         {
+          "value": "1 PR / week",
+          "label": "Roadmap OS’s routine output: check-in, next week’s plan, and radar update in one reviewable pull request",
+          "source": "roadmap-os README and routine prompt"
+        },
+        {
           "value": "174",
-          "label": "web tests across sidecar, router, council, graph, memory, voice, vision, and tools",
+          "label": "Jarvis web tests across sidecar, router, council, graph, memory, voice, vision, and tools",
           "source": "jarvis-agentic-orchestrator README and tests/web"
         },
         {
           "value": "34",
-          "label": "agent personas available to the graph",
+          "label": "agent personas available to Jarvis’s graph",
           "source": "jarvis-agentic-orchestrator README"
         }
       ],
       "failures": [
         {
+          "title": "The hand-off isn’t built yet",
+          "text": "Roadmap OS’s weekly tasks don’t flow into Jarvis automatically, and Jarvis doesn’t yet start work on the laptop by itself. The two halves run separately today."
+        },
+        {
           "title": "No routing benchmark yet",
-          "text": "Latency and routing quality haven't been measured — the fallback ladder is tested for behavior, not for whether it picks the best model."
+          "text": "Latency and routing quality haven’t been measured — Jarvis’s fallback ladder is tested for behavior, not for whether it picks the best model."
         }
       ],
       "next": [
-        "Benchmark routing quality and latency against a fixed task set."
+        "Feed Roadmap OS’s weekly task list straight into Jarvis.",
+        "Let Jarvis start low-risk tasks on its own — boilerplate code, a CAD session, email drafts — and queue the results for review.",
+        "Benchmark Jarvis’s routing quality and latency against a fixed task set."
       ],
       "gallery": [
+        {
+          "type": "image",
+          "src": "./media/jarvis-agentic-orchestrator/agents.png",
+          "alt": "Jarvis agent-graph canvas with connected agent personas.",
+          "caption": "Jarvis agent graph: draw agent-to-agent edges and it runs them in topological order, at most three at a time."
+        },
         {
           "type": "image",
           "src": "./media/jarvis-agentic-orchestrator/graph-running.png",
           "alt": "Agent board mid-run, with a glowing edge carrying a persona's output to the orchestrator.",
           "caption": "Mid-run: the lit edge shows which agent is feeding the orchestrator."
+        },
+        {
+          "type": "image",
+          "src": "./media/jarvis-agentic-orchestrator/shell.png",
+          "alt": "Jarvis shell: an arc-reactor HUD with a dock of module buttons.",
+          "caption": "The Jarvis shell: floating module windows over an arc-reactor HUD."
         },
         {
           "type": "image",
@@ -1254,7 +1291,7 @@
       ],
       "links": [
         {
-          "label": "Code on GitHub",
+          "label": "Jarvis code on GitHub",
           "url": "https://github.com/Bhavya007-17/jarvis-agentic-orchestrator",
           "kind": "code"
         },
