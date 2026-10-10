@@ -128,9 +128,10 @@ else {
   if (reel.length !== 5) fail(`profile.reel must have exactly 5 entries; has ${reel.length}.`);
   reel.forEach((item, index) => {
     if (!ids.has(item?.project)) fail(`profile.reel[${index}].project "${item?.project}" is not a project id.`);
+    if (!allowedMediaTypes.includes(item?.type)) fail(`profile.reel[${index}] has type "${item?.type ?? ''}"; expected one of [${allowedMediaTypes.join(', ')}].`);
     if (!isText(item?.src)) fail(`profile.reel[${index}] has no "src".`);
-    if (!isText(item?.poster)) fail(`profile.reel[${index}] is a video with no "poster".`);
-    if (!isText(item?.caption)) fail(`profile.reel[${index}] has no "caption" (the reel's alt text).`);
+    if (item?.type === 'video' && !isText(item?.poster)) fail(`profile.reel[${index}] is a video with no "poster".`);
+    if (!isText(item?.caption)) fail(`profile.reel[${index}] has no "caption" (the strip's link text).`);
   });
   asArray(profile.skills).forEach((group, groupIndex) => asArray(group?.items).forEach((item, itemIndex) => {
     asArray(item?.projects).forEach(id => {

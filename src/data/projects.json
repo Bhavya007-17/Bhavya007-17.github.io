@@ -2,7 +2,6 @@
   "profile": {
     "name": "Bhavya Dosi",
     "headline": "Mechanical engineering · Virginia Tech · Class of 2029",
-    "tagline": "I build robots end to end — CAD and FEA hardware, ROS 2 and MuJoCo software, and robot learning.",
     "availability": "Looking for Summer 2027 internships in robotics and physical AI.",
     "summary": "Mechanical engineering sophomore and Chief Engineer of CroLabs at Virginia Tech. I like the parts of robotics where hardware and software have to agree: a frame that survives its load case, a planner that knows what a robot can actually do, a dataset whose failures are logged instead of hidden.",
     "github": "https://github.com/Bhavya007-17",
@@ -171,33 +170,37 @@
     "reel": [
       {
         "project": "hive",
+        "type": "video",
         "src": "./media/hive/loop.mp4",
         "poster": "./media/hive/loop.jpg",
-        "caption": "HIVE · multi-robot mission in Gazebo (simulation)"
+        "caption": "HIVE · concept animation"
       },
       {
         "project": "robotic-arm",
+        "type": "video",
         "src": "./media/robotic-arm/loop.mp4",
         "poster": "./media/robotic-arm/loop.jpg",
-        "caption": "Natural-language arm · pick-and-place in MuJoCo (simulation)"
+        "caption": "Natural-language arm · MuJoCo"
       },
       {
         "project": "amphibious-robot",
-        "src": "./media/amphibious-robot/loop.mp4",
-        "poster": "./media/amphibious-robot/loop.jpg",
-        "caption": "Amphibious robot · ring-duct prototype on the bench"
+        "type": "image",
+        "src": "./media/amphibious-robot/cad-iso.jpg",
+        "caption": "Amphibious robot · CAD"
       },
       {
         "project": "ros2-micromouse-sync",
+        "type": "video",
         "src": "./media/ros2-micromouse-sync/loop.mp4",
         "poster": "./media/ros2-micromouse-sync/loop.jpg",
-        "caption": "Micromouse explorer · mapping an unseen maze (simulation)"
+        "caption": "Micromouse · solving an unseen maze"
       },
       {
         "project": "act-training",
+        "type": "video",
         "src": "./media/act-training/loop.mp4",
         "poster": "./media/act-training/loop.jpg",
-        "caption": "SO-101 dataset · scripted-expert demonstration (simulation)"
+        "caption": "SO-101 · scripted-expert demos"
       }
     ]
   },
@@ -205,45 +208,46 @@
     {
       "id": "hive",
       "name": "HIVE",
-      "status": "Working in simulation",
-      "role": "Chief Engineer · built the ROS 2 software stack and designed the rover hardware",
-      "team": "CroLabs team project (25+ members)",
+      "status": "Active · CroLabs flagship",
+      "role": "Chief Engineer · owns the architecture; built the ROS 2 software stack and designed the rover",
+      "team": "CroLabs, 25+ students across software, electrical, mechanical, and drone subteams",
       "timeline": "Jul 2026 – present",
       "domains": [
         "Software",
         "Mechanical"
       ],
-      "summary": "A ROS 2 framework that reads a new robot's code, works out what it can do, and runs a mixed robot team from one plain-English mission — end to end in Gazebo.",
+      "summary": "CroLabs’ flagship: a platform that reads a robot’s own code, works out what it can do, and coordinates drones, ground robots, and arms from one plain-English mission. The software runs end to end in simulation; the robots it will run on are being designed and built.",
       "chips": [
-        "5/5 sim missions passed",
-        "189.5 ms e-stop halt",
-        "516 tests"
+        "25+ student team",
+        "Drone · rover · arm, one mission",
+        "5/5 sim missions passed"
       ],
       "card": {
         "type": "video",
         "src": "./media/hive/loop.mp4",
         "poster": "./media/hive/loop.jpg",
-        "alt": "Top-down Gazebo view of the HIVE arena with a quadrotor over the landing pad."
+        "alt": "HIVE concept animation: a rover arm picks up a box while the fleet dashboard tracks the mission."
       },
       "hero": {
         "type": "video",
-        "src": "./media/hive/run.mp4",
-        "poster": "./media/hive/run.jpg",
-        "alt": "Screen recording of a full HIVE mission: operator dashboard, Gazebo arena, and telemetry.",
-        "caption": "Full simulation run: “find the red box,” then “bring the red box back to the station” — plans, human approval, and a drone, ground robot, and arm executing in Gazebo with live telemetry."
+        "src": "./media/hive/concept.mp4",
+        "poster": "./media/hive/concept.jpg",
+        "captions": "./media/hive/concept.vtt",
+        "alt": "HIVE concept film: a drone, rover, tracked mule, and fixed arm work together to return a box to an assembly line.",
+        "caption": "Concept film (90 s): where HIVE is headed. One request — a drone finds the box, a rover and a tracked mule bring it back, and a fixed arm puts it on the line, with a person approving the plan. An animation of robots in design, not footage."
       },
       "facts": [
         {
-          "value": "5/5",
-          "label": "red-box missions passed in simulation"
+          "value": "25+",
+          "label": "students across software, electrical, mechanical, and drone subteams"
         },
         {
           "value": "3",
-          "label": "robot types: PX4 quadrotor, TurtleBot3, OpenMANIPULATOR-X"
+          "label": "stages: capability extraction, task planning, execution and recovery"
         },
         {
-          "value": "189.5 ms",
-          "label": "halt latency at cruise"
+          "value": "5/5",
+          "label": "red-box missions passed in simulation"
         },
         {
           "value": "516",
@@ -251,11 +255,11 @@
         }
       ],
       "tldr": [
-        "What: Onboard an unfamiliar robot straight from its ROS 2 workspace, then coordinate a mixed fleet from one natural-language mission.",
-        "How: A Composer turns URDF, launch files, and interfaces into a capability descriptor with evidence citations back to the source files; an Executive plans, validates in simulation, waits for human approval, and dispatches to capability-matched agents.",
-        "Result: 5 of 5 red-box retrieval missions passed in Gazebo with a quadrotor, a ground robot, and an arm — and the system refuses missions no robot in the fleet can perform."
+        "What: CroLabs’ flagship robotics platform. Point it at a robot’s ROS 2 code and it works out what that robot can do, then coordinates drones, ground robots, and arms from one plain-English mission.",
+        "How: A Composer turns a robot’s URDF, launch files, and interfaces into a capability descriptor that cites the source files; an Executive plans, checks the plan in simulation, and waits for a person to approve; per-robot Agents execute with their own safety limits. Student pods each own one slice end to end.",
+        "Result: The full software pipeline runs end to end in Gazebo — 5 of 5 retrieval missions with a quadrotor, a ground robot, and an arm — while the team designs the rover and drone it will run on."
       ],
-      "problem": "Every robot in a mixed fleet speaks its own ROS 2 dialect, so adding one usually means weeks of bespoke integration code. HIVE's goal is to replace that with workspace analysis: read the robot's code, derive what it can safely do, and let a single planner coordinate ground, aerial, and manipulator robots from a plain-English mission.",
+      "problem": "Every robot in a mixed fleet speaks its own ROS 2 dialect, so adding one usually means weeks of bespoke integration code. HIVE’s goal is to make onboarding an automated step — read the robot’s code, derive what it can safely do — and then let one planner coordinate ground, aerial, and manipulator robots from a plain-English mission. It is the project CroLabs is organized around: the software, electrical, mechanical, and drone subteams each own a piece of it.",
       "steps": [
         {
           "title": "Composer reads the robot's code",
@@ -303,6 +307,7 @@
         }
       ],
       "decisions": [
+        "Organized the team into pods that each own a slice end to end — ROS 2 node, tests, dashboard view, and docs — so work is never thrown over the wall, and cross-pod changes get a short written proposal first.",
         "Provenance is overwritten after the LLM step, so the model can't fabricate its own audit trail — citations come from the static analysis, not from the model.",
         "The planner is allowed to refuse: the Composer benchmark scores calibrated refusal, and a refused plan never reaches the approval gate.",
         "Plans reference named places, never coordinates the LLM invents.",
@@ -352,11 +357,20 @@
         }
       ],
       "next": [
+        "Bring the first physical CroLabs robot into the fleet.",
+        "Run the onboarding experiment: time-to-onboard and task success on ROS 2 stacks HIVE has never seen.",
         "Fix stale-state handling so missions pass on a reset stack, not only a fresh one.",
-        "Ground-truth the remaining 9 benchmark workspaces and test more than one model.",
-        "Cut the rover arm's mass back under budget, then build and test it with stabilizer feet down for far picks."
+        "Cut the rover arm’s mass back under budget, then build and test it.",
+        "A live demo with real robots at croExpo."
       ],
       "gallery": [
+        {
+          "type": "video",
+          "src": "./media/hive/run.mp4",
+          "poster": "./media/hive/run.jpg",
+          "alt": "Screen recording of a full HIVE mission: operator dashboard, Gazebo arena, and telemetry.",
+          "caption": "Full simulation run (3 min 52 s): “find the red box,” then “bring the red box back to the station” — plans, human approval, and a drone, ground robot, and arm executing in Gazebo with live telemetry."
+        },
         {
           "type": "image",
           "src": "./media/hive/rover-farpick.jpg",
@@ -374,14 +388,6 @@
           "src": "./media/hive/j2-section.png",
           "alt": "Annotated cross-section of the J2 joint showing the gearbox cartridge, brake, and encoder.",
           "caption": "J2 joint section: gearbox cartridge, brake, and encoder."
-        },
-        {
-          "type": "video",
-          "src": "./media/hive/concept.mp4",
-          "poster": "./media/hive/concept.jpg",
-          "alt": "Animated HIVE concept film.",
-          "caption": "Concept film — the full vision for HIVE, animated.",
-          "captions": "./media/hive/concept.vtt"
         }
       ],
       "links": [
@@ -528,6 +534,12 @@
       "gallery": [
         {
           "type": "image",
+          "src": "./media/robotic-arm/architecture.png",
+          "alt": "Architecture diagram: microphone or typed command, voice.py with a silence guard, agent.py with a local regex fast path or NVIDIA NIM tool calling, skills.py manipulation primitives, and sim_env.py MuJoCo physics.",
+          "caption": "Command to motion: speech or text, the silence guard, the agent, the skills, and the simulator."
+        },
+        {
+          "type": "image",
           "src": "./media/robotic-arm/scene.jpg",
           "alt": "MuJoCo scene: Panda, table, shelf, and four colored cubes.",
           "caption": "The scene: four colored cubes, a table, and a shelf."
@@ -565,22 +577,20 @@
       ],
       "summary": "One airframe designed to fly, drive, and swim, built around four ring ducts that tilt between flight and driving orientations.",
       "chips": [
+        "Fly · drive · swim design",
         "Ring-duct prototype built",
-        "Frame material trade study",
-        "Fly · drive · swim design"
+        "Frame material trade study"
       ],
       "card": {
-        "type": "video",
-        "src": "./media/amphibious-robot/loop.mp4",
-        "poster": "./media/amphibious-robot/loop.jpg",
-        "alt": "Red 3D-printed ring duct around a motor and propeller on its bench mount."
+        "type": "image",
+        "src": "./media/amphibious-robot/cad-iso.jpg",
+        "alt": "CAD view of the amphibious robot: four red ring ducts with motors and propellers around a central electronics bay."
       },
       "hero": {
-        "type": "video",
-        "src": "./media/amphibious-robot/tilt-test.mp4",
-        "poster": "./media/amphibious-robot/tilt-test.jpg",
-        "alt": "Bench footage of the prototype ring-duct module: a red 3D-printed ring around a motor and propeller on its mount.",
-        "caption": "Prototype ring-duct module on the bench: 3D-printed ring, motor, and propeller on its mount."
+        "type": "image",
+        "src": "./media/amphibious-robot/cad-iso.jpg",
+        "alt": "CAD view of the amphibious robot: four red ring ducts with motors and propellers around a central electronics bay.",
+        "caption": "Full-robot CAD: four tilting ring ducts around the central electronics bay, in flight orientation."
       },
       "facts": [
         {
@@ -608,9 +618,9 @@
           "text": "Four ring frames carry the propellers around a central electronics bay, with servos at each ring's tilt axis.",
           "media": {
             "type": "image",
-            "src": "./media/amphibious-robot/cad-iso.jpg",
-            "alt": "CAD view of the four ring frames, servos, and central deck.",
-            "caption": "CAD layout of the ring frames and central bay."
+            "src": "./media/amphibious-robot/cad-top.jpg",
+            "alt": "Top-down CAD view of the rings, servos, and electronics deck.",
+            "caption": "CAD layout from above: rings, tilt servos, and the central bay."
           }
         },
         {
@@ -662,15 +672,16 @@
       "gallery": [
         {
           "type": "image",
-          "src": "./media/amphibious-robot/cad-top.jpg",
-          "alt": "Top-down CAD view of the rings, servos, and electronics deck.",
-          "caption": "Top view: rings, servos, and electronics deck."
-        },
-        {
-          "type": "image",
           "src": "./media/amphibious-robot/cad-render.jpg",
           "alt": "CAD render of the robot with its four red rings tilted upright like wheels.",
-          "caption": "Full-robot CAD render with the rings tilted upright."
+          "caption": "Driving orientation: the rings tilt upright and roll like wheels (CAD render)."
+        },
+        {
+          "type": "video",
+          "src": "./media/amphibious-robot/tilt-test.mp4",
+          "poster": "./media/amphibious-robot/tilt-test.jpg",
+          "alt": "Bench footage of the prototype ring-duct module: a red 3D-printed ring around a motor and propeller on its mount.",
+          "caption": "Bench test of one prototype ring-duct module (phone footage)."
         }
       ],
       "links": [],
@@ -691,29 +702,29 @@
       "domains": [
         "Software"
       ],
-      "summary": "A ROS 2 micromouse that gets no map: it senses walls with LiDAR, tracks itself with odometry, builds the maze as it goes, then speed-runs its own learned map.",
+      "summary": "A ROS 2 micromouse that gets no map: it senses walls with a LiDAR scan, builds the maze as it goes, then speed-runs the shortest path through its own learned map.",
       "chips": [
         "Unseen maze, no map",
-        "LiDAR + odometry, closed loop",
+        "Shortest-path speed run",
         "163 tests"
       ],
       "card": {
         "type": "video",
         "src": "./media/ros2-micromouse-sync/loop.mp4",
         "poster": "./media/ros2-micromouse-sync/loop.jpg",
-        "alt": "Belief map filling in beside the true maze as the robot explores."
+        "alt": "Top-down Gazebo view of the robot speed-running the maze beside its belief map."
       },
       "hero": {
         "type": "video",
-        "src": "./media/ros2-micromouse-sync/explorer-quad.mp4",
-        "poster": "./media/ros2-micromouse-sync/explorer-quad.jpg",
-        "alt": "Four synchronized views of one run: belief map, true maze, Gazebo, and RViz.",
-        "caption": "One closed-loop run, four views: the robot's belief, the true maze, Gazebo, and RViz with the LiDAR scan and odometry trail."
+        "src": "./media/ros2-micromouse-sync/run.mp4",
+        "poster": "./media/ros2-micromouse-sync/run.jpg",
+        "alt": "Gazebo top-down view of the robot beside its belief map as it searches, returns, and speed-runs an 8×8 maze.",
+        "caption": "One full run on an 8×8 maze it has never seen, sped up: Gazebo on the left, the robot’s belief on the right. It searches to the center, returns, then speed-runs the 31-move shortest path. The robot is moved cell by cell through Gazebo’s set_pose service for this recording."
       },
       "facts": [
         {
-          "value": "50 · 50 · 50",
-          "label": "moves to search, return, and speed-run a 10×10 maze whose shortest path is 50"
+          "value": "31 / 31",
+          "label": "speed-run moves vs. the true shortest path on the 8×8 run above"
         },
         {
           "value": "163",
@@ -726,8 +737,8 @@
       ],
       "tldr": [
         "What: A micromouse stack where the robot starts with no map and has to discover the maze it is solving.",
-        "How: A ray-marched LaserScan feeds a tri-state belief map; flood-fill re-plans after every cell while a ROS 2 controller drives /cmd_vel and closes the loop on /odom in Gazebo Harmonic.",
-        "Result: On a seeded 10×10 maze it searches, returns, and speed-runs in 50 moves each — the true shortest path."
+        "How: A ray-marched LaserScan feeds a tri-state belief map; flood-fill re-plans after every cell, and a ROS 2 cell-motion controller moves the robot through the maze in Gazebo Harmonic.",
+        "Result: It searches, returns, and speed-runs on the true shortest path — 50 moves on a seeded 10×10 maze, 31 on the 8×8 run above."
       ],
       "problem": "The first version solved the maze from a god's-eye view: the planner read the walls from a file and the robot just replayed the answer. It discovered nothing. The rebuild takes the map away — the robot has to sense, believe, and re-plan like a real micromouse.",
       "steps": [
@@ -757,14 +768,13 @@
           }
         },
         {
-          "title": "Drive closed loop",
-          "text": "A cell-motion controller turns each move into /cmd_vel commands and reads position back from /odom, with absolute turn targets anchored from odometry to the world frame."
+          "title": "Move the robot",
+          "text": "A cell-motion controller turns each move into motion in Gazebo Harmonic: either placing the robot cell by cell through the set_pose service, or driving /cmd_vel and reading /odom back in closed loop."
         }
       ],
       "decisions": [
         "Wait for a settled scan, not just the next one — a scan captured mid-move corrupts the map, so the brain checks the robot has stopped before trusting the reading.",
         "Tri-state belief instead of “no wall until seen”: the planner can be optimistic about UNKNOWN while searching and pessimistic before the speed run.",
-        "Absolute turn targets anchored once from odometry to the world, so heading errors don't accumulate across turns.",
         "The original omniscient solver stays in the repo as a baseline to compare against.",
         "The ray-cast LiDAR is the default because Gazebo's gpu_lidar publishes nothing without a GPU; lidar:=gz swaps it back."
       ],
@@ -776,8 +786,8 @@
         },
         {
           "value": "31",
-          "label": "moves on the 8×8 four-view run — the true optimum",
-          "source": "ros2-micromouse-sync README"
+          "label": "speed-run moves on the 8×8 run in the video — the true optimum",
+          "source": "Recorded run, Oct 2026"
         },
         {
           "value": "163",
@@ -787,8 +797,8 @@
       ],
       "failures": [
         {
-          "title": "The LiDAR can't prove drift rejection yet",
-          "text": "The ray-cast sensor uses the controller's own pose estimate, so it can't catch odometry drift — a real sensor model is needed to test that."
+          "title": "Closed-loop driving isn’t reliable yet",
+          "text": "In closed-loop velocity mode the simulated robot can drift into a wall and stop short while the brain, trusting its own odometry, finishes the run anyway. The ray-cast LiDAR uses the same pose estimate, so nothing catches the drift — a real sensor model and wall-following corrections are the fix."
         },
         {
           "title": "A blank Gazebo that wasn't a GPU problem",
@@ -796,18 +806,10 @@
         }
       ],
       "next": [
-        "Add sensor noise and wheel slip so drift rejection is actually tested.",
+        "Make closed-loop driving reliable: a LiDAR model that sees true walls, plus heading and centering corrections.",
         "Run the same brain on a physical micromouse."
       ],
-      "gallery": [
-        {
-          "type": "video",
-          "src": "./media/ros2-micromouse-sync/known-map-demo.mp4",
-          "poster": "./media/ros2-micromouse-sync/known-map-demo.jpg",
-          "alt": "Earlier known-map baseline: mms and Gazebo solving a 16×16 maze in sync.",
-          "caption": "The original known-map baseline, kept for comparison."
-        }
-      ],
+      "gallery": [],
       "links": [
         {
           "label": "Code on GitHub",
@@ -836,14 +838,14 @@
         "type": "video",
         "src": "./media/act-training/loop.mp4",
         "poster": "./media/act-training/loop.jpg",
-        "alt": "Simulated SO-101 arm picking a red cube into a box."
+        "alt": "Simulated SO-101 arm placing a red cube in a green target zone, filmed by a slowly moving camera."
       },
       "hero": {
         "type": "video",
-        "src": "./media/act-training/episodes.mp4",
-        "poster": "./media/act-training/episodes.jpg",
-        "alt": "Simulated SO-101 arm performing scripted pick-and-place episodes in MuJoCo.",
-        "caption": "Scripted-expert demonstrations recorded in MuJoCo for the dataset — demonstrations, not a learned policy."
+        "src": "./media/act-training/showcase.mp4",
+        "poster": "./media/act-training/showcase.jpg",
+        "alt": "SO-101 arm in MuJoCo placing a red cube on a shelf and in a green zone, with a wrist-camera inset, then twelve demonstrations side by side.",
+        "caption": "Scripted-expert episodes re-run from dataset seeds and filmed with a moving camera, wrist view inset — both tasks, then 12 of the 160 recorded demonstrations side by side. Demonstrations, not a learned policy."
       },
       "facts": [
         {
@@ -930,7 +932,15 @@
         "Evaluate ACT success rate in simulation against the frozen protocol.",
         "Teleoperated data on hardware, then the SmolVLA comparison."
       ],
-      "gallery": [],
+      "gallery": [
+        {
+          "type": "video",
+          "src": "./media/act-training/episodes.mp4",
+          "poster": "./media/act-training/episodes.jpg",
+          "alt": "Simulated SO-101 arm performing scripted pick-and-place episodes in MuJoCo, from the dataset's fixed camera.",
+          "caption": "The dataset’s own fixed-camera view, as recorded at 640×480."
+        }
+      ],
       "links": [
         {
           "label": "Code on GitHub",
@@ -1140,11 +1150,23 @@
       "steps": [
         {
           "title": "One sidecar, one LLM path",
-          "text": "A FastAPI sidecar connects every feature to the OpenJarvis LiteLLM engine; no model ID is hard-coded."
+          "text": "A FastAPI sidecar connects every feature to the OpenJarvis LiteLLM engine; no model ID is hard-coded.",
+          "media": {
+            "type": "image",
+            "src": "./media/jarvis-agentic-orchestrator/shell.png",
+            "alt": "Jarvis shell: an arc-reactor HUD with a dock of module buttons.",
+            "caption": "The shell: floating module windows over an arc-reactor HUD."
+          }
         },
         {
           "title": "Route and fall back",
-          "text": "Each task is classified and sent to the best-fit NVIDIA NIM model, falling back to a second NIM model, Gemini Flash, then local Ollama with exponential backoff."
+          "text": "Each task is classified and sent to the best-fit NVIDIA NIM model, falling back to a second NIM model, Gemini Flash, then local Ollama with exponential backoff.",
+          "media": {
+            "type": "image",
+            "src": "./media/jarvis-agentic-orchestrator/settings.png",
+            "alt": "Settings view with the chat model on auto and a per-task map of reasoning, code, and general models.",
+            "caption": "Settings: the per-task model map the router uses."
+          }
         },
         {
           "title": "Council for hard plans",
@@ -1157,13 +1179,23 @@
           }
         },
         {
+          "title": "Draw a graph of agents",
+          "text": "Drag personas onto a board and wire them to the orchestrator; Jarvis checks the graph for cycles, runs it in topological order with at most three calls in flight, and synthesizes one plan.",
+          "media": {
+            "type": "image",
+            "src": "./media/jarvis-agentic-orchestrator/graph-plan.png",
+            "alt": "Agent board: Skeptic and Pragmatist feeding the orchestrator, with the synthesized rate-limiting plan beside it.",
+            "caption": "A finished graph run: two personas, one orchestrator, one synthesized plan."
+          }
+        },
+        {
           "title": "Tools and memory",
           "text": "MCP servers add a live code knowledge graph, web and GitHub access, and six action tools; durable memory carries facts across sessions.",
           "media": {
             "type": "image",
-            "src": "./media/jarvis-agentic-orchestrator/connections.png",
-            "alt": "Connections view showing the code graph and routing map.",
-            "caption": "Connections: code knowledge graph and routing map."
+            "src": "./media/jarvis-agentic-orchestrator/tools.png",
+            "alt": "Tools view listing the connected MCP servers and the tools they expose.",
+            "caption": "MCP servers and the tools they expose."
           }
         }
       ],
@@ -1197,9 +1229,27 @@
       "gallery": [
         {
           "type": "image",
+          "src": "./media/jarvis-agentic-orchestrator/graph-running.png",
+          "alt": "Agent board mid-run, with a glowing edge carrying a persona's output to the orchestrator.",
+          "caption": "Mid-run: the lit edge shows which agent is feeding the orchestrator."
+        },
+        {
+          "type": "image",
+          "src": "./media/jarvis-agentic-orchestrator/connections.png",
+          "alt": "Connections view showing the code knowledge graph and routing map.",
+          "caption": "Connections: live code knowledge graph and routing map."
+        },
+        {
+          "type": "image",
+          "src": "./media/jarvis-agentic-orchestrator/memory.png",
+          "alt": "Memory view listing stored personal facts.",
+          "caption": "Memory: durable facts carried across sessions."
+        },
+        {
+          "type": "image",
           "src": "./media/jarvis-agentic-orchestrator/chat.png",
           "alt": "Jarvis chat view.",
-          "caption": "Chat."
+          "caption": "Chat, with the model that answered."
         }
       ],
       "links": [
